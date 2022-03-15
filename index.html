@@ -541,10 +541,6 @@ table {
                 <div id="box-holder-2-widescreen"></div>
                 <div id="box-holder-3-widescreen"></div>
                 <div id="box-holder-4-widescreen"></div>
-                <div id="box-holder-5-widescreen"></div>
-                <div id="box-holder-6-widescreen"></div>
-                <div id="box-holder-7-widescreen"></div>
-                <div id="box-holder-8-widescreen"></div>
             </div>
         </div>
         <div id="post_game">
@@ -556,8 +552,6 @@ table {
                     <td style="font-size:75%; width:50%; text-align:center; vertical-align: top; padding-top: 15px;">
                         <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer12">&nbsp;</div>
                         <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer34">&nbsp;</div>
-                        <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer56">&nbsp;</div>
-                        <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer78">&nbsp;</div>
 
                     </td>
                 </tr>
@@ -1094,8 +1088,7 @@ function pk(key, keyCode) {
             column = 0;
             guess_current = "";
 
-            if (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0 &&
-                answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0) {
+            if (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) {
                 acquire("body").style.backgroundColor = "green";
                 acquire("body").style.color = "black";
                 show_post_game(true);
@@ -1559,8 +1552,6 @@ function do_share(copy, shareType) {
     let i;
     printclear(acquire("answer12"), answer[0].toUpperCase() + " - " + answer[1].toUpperCase());
     printclear(acquire("answer34"), answer[2].toUpperCase() + " - " + answer[3].toUpperCase());
-    printclear(acquire("answer56"), answer[4].toUpperCase() + " - " + answer[5].toUpperCase());
-    printclear(acquire("answer78"), answer[6].toUpperCase() + " - " + answer[7].toUpperCase());
 
     let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) && answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0;
     let text_share;
@@ -1569,21 +1560,13 @@ function do_share(copy, shareType) {
             get_num_emoji(answer_correct[0]) +
             get_num_emoji(answer_correct[1]) + "\n" +
             get_num_emoji(answer_correct[2]) +
-            get_num_emoji(answer_correct[3]) + "\n" +
-            get_num_emoji(answer_correct[4]) +
-            get_num_emoji(answer_correct[5]) + "\n" +
-            get_num_emoji(answer_correct[6]) +
-            get_num_emoji(answer_correct[7]);
+            get_num_emoji(answer_correct[3]);
     } else {
         text_share = "Topicle\n" +
             get_num_emoji(answer_correct[0]) +
             get_num_emoji(answer_correct[1]) + (shouldShowWords ? " " + answer[0].toUpperCase() + " - " + answer[1].toUpperCase() : "") + "\n" +
             get_num_emoji(answer_correct[2]) +
-            get_num_emoji(answer_correct[3]) + (shouldShowWords ? " " + answer[2].toUpperCase() + " - " + answer[3].toUpperCase() : "") + "\n" +
-            get_num_emoji(answer_correct[4]) +
-            get_num_emoji(answer_correct[5]) + (shouldShowWords ? " " + answer[4].toUpperCase() + " - " + answer[5].toUpperCase() : "") + "\n" +
-            get_num_emoji(answer_correct[6]) +
-            get_num_emoji(answer_correct[7]) + (shouldShowWords ? " " + answer[6].toUpperCase() + " - " + answer[7].toUpperCase() : "");
+            get_num_emoji(answer_correct[3]) + (shouldShowWords ? " " + answer[2].toUpperCase() + " - " + answer[3].toUpperCase() : "");
     }
 
     text_share += "\nkg583.github.io/topicle";
@@ -1599,28 +1582,12 @@ function do_share(copy, shareType) {
     if (answer_correct[2] >= 0 && answer_correct[3] >= 0) {
         l2 = Math.max(answer_correct[2], answer_correct[3])
     }
-    let l3 = line - 1;
-    if (answer_correct[4] >= 0 && answer_correct[5] >= 0) {
-        l3 = Math.max(answer_correct[4], answer_correct[5])
-    }
-    let l4 = line - 1;
-    if (answer_correct[6] >= 0 && answer_correct[7] >= 0) {
-        l4 = Math.max(answer_correct[6], answer_correct[7])
-    }
     for (i = 0; i <= l1; i++) {
         text_share += share[0][i] + " " + share[1][i] + "\n";
     }
     text_share += "\n"
     for (i = 0; i <= l2; i++) {
         text_share += share[2][i] + " " + share[3][i] + "\n";
-    }
-    text_share += "\n"
-    for (i = 0; i <= l3; i++) {
-        text_share += share[4][i] + " " + share[5][i] + "\n";
-    }
-    text_share += "\n"
-    for (i = 0; i <= l4; i++) {
-        text_share += share[6][i] + " " + share[7][i] + "\n";
     }
 
     if (copy && window.gtag) {
@@ -1778,58 +1745,6 @@ function do_share(copy, shareType) {
                 y++;
             }
 
-            // draw words 5 + 6
-            for (i = 0; i <= l3; i++) {
-                emojiStr = share[4][i];
-                x = 0;
-                while (emojiStr) {
-                    pair = get_next_color_from_emojis(emojiStr);
-                    color = pair[0];
-                    emojiStr = pair[1]
-                    ctx.fillStyle = color;
-                    roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
-                    x++;
-                }
-
-                emojiStr = share[5][i];
-                x = 6;
-                while (emojiStr) {
-                    pair = get_next_color_from_emojis(emojiStr);
-                    color = pair[0];
-                    emojiStr = pair[1]
-                    ctx.fillStyle = color;
-                    roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
-                    x++;
-                }
-                y++;
-            }
-
-            // draw words 7 + 8
-            for (i = 0; i <= l3; i++) {
-                emojiStr = share[6][i];
-                x = 0;
-                while (emojiStr) {
-                    pair = get_next_color_from_emojis(emojiStr);
-                    color = pair[0];
-                    emojiStr = pair[1]
-                    ctx.fillStyle = color;
-                    roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
-                    x++;
-                }
-
-                emojiStr = share[7][i];
-                x = 6;
-                while (emojiStr) {
-                    pair = get_next_color_from_emojis(emojiStr);
-                    color = pair[0];
-                    emojiStr = pair[1]
-                    ctx.fillStyle = color;
-                    roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
-                    x++;
-                }
-                y++;
-            }
-
             canvas.toBlob(function(blob) {
                 let file = new File([blob], "topicle.png", {type: "image/png"});
                 navigator.share({
@@ -1851,7 +1766,7 @@ function render_bg_keys() {
     for (k in keys) {
         let g;
         let keyGuessed = false;
-        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
+        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
         const colorOptions = ["#919191", "#ffcc00", "#00cc88"];
         let gradStrArr = [];
         for (g = 0; g < keyColors.length; g++) {
@@ -1872,8 +1787,8 @@ function render_bg_keys() {
         let bg = gradStrArr.join(",");
         let key = acquire(keys[k]);
         key.style.backgroundImage = bg
-        key.style.backgroundSize = "51% 26%";
-        key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 33%, 100% 33%, 0% 66%, 100% 66%, 0% 100%, 100% 100%"
+        key.style.backgroundSize = "50% 50%";
+        key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 100%, 100% 100%"
         key.style.backgroundRepeat = "no-repeat"
         key.style.color = keyGuessed ? "black" : "white"
         // key.style.textShadow = keyGuessed ? "0 0 4px white" : ""
