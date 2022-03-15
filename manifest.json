@@ -1,6 +1,6 @@
 {
-  "short_name": "Octordle",
-  "name": "Octordle",
+  "short_name": "Topicle",
+  "name": "Topicle",
   "icons": [
     {
       "src": "favicon-48.png",
@@ -57,10 +57,10 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "https://www.octordle.com",
+  "start_url": "https://kg583.github.io/topicle",
   "background_color": "#181a1b",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#181a1b",
-  "description": "Put your skills to the test and solve eight Wordles at once! You have 13 guesses to solve all eight words. A new Octordle available each day to solve."
+  "description": "Put your skills to the test and solve four themed Wordles at once! You have 7 guesses to match all four words to the clue. A new Topicle is available each day to solve."
 }
