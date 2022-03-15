@@ -1,24 +1,24 @@
-<html>
+<html lang="en-us">
 <head>
 <meta charset="UTF-8" />
-<title>Octordle</title>
-<meta name="description" content="Put your skills to the test and solve eight Wordles at once! You have 13 guesses to solve all eight words. A new Octordle available each day to solve.">
-<meta name="keywords" content="Octordle, Quordle, Dordle, Wordle, word game, puzzle, brain teaser">
-<meta name="author" content="Freddie Meyer">
+<title>Topicle</title>
+<meta name="description" content="Put your skills to the test and solve four themed Wordles at once! You have 7 guesses to match all four words to the clue. A new Topicle available each day to solve.">
+<meta name="keywords" content="Topicle, Quordle, Wordle, word game, clue, puzzle, brain teaser, guess, match">
+<meta name="author" content="Kevin Gomez & Walter Price">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <!-- FB Meta Tags -->
-<meta property="og:url" content="https://octordle.com">
+<meta property="og:url" content="https://kg583.github.io/topicle">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Octordle">
-<meta property="og:description" content="Put your skills to the test and solve eight Wordles at once! You have 13 guesses to solve all eight words. A new Octordle available each day to solve.">
-<meta property="og:image" content="https://octordle.com/screenshot.png">
+<meta property="og:title" content="Topicle">
+<meta property="og:description" content="Put your skills to the test and solve four themed Wordles at once! You have 7 guesses to match all four words to the clue. A new Topicle available each day to solve.">
+<meta property="og:image" content="https://kg583.github.io/topicle/banner.png">
 <meta property="og:image:width" content="802">
 <meta property="og:image:height" content="531">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="octordle.com">
+<meta property="twitter:domain" content="kg583.github.io/topicle">
 
 <meta name="theme-color" content="#181a1b" />
 <meta name=color-scheme content="dark">
@@ -91,8 +91,6 @@ a {
     -moz-user-select: none;
     /* Firefox */
     -ms-user-select: none;
-    /* IE10+/Edge */
-    user-select: none;
     /* Standard */
 }
 
@@ -169,7 +167,7 @@ table {
 <body>
 <div id="body" style="max-width:550px;margin:auto;height:100%;display:flex">
     <div id="title" width="100%" style="margin:auto;flex:1;">
-        <center>
+        <div style="text-align: center;">
             <div class="button">&nbsp;</div>
             <div style="width: 67%;">
                 <table style="width:100%;">
@@ -189,7 +187,19 @@ table {
                 <table style="width:100%;">
                     <tr>
                         <td style="width:50%; text-align:right;">&copy;2022</td>
-                        <td style="width:50%;">Kenneth Crawford</td>
+                        <td style="width:50%;">Kevin Gomez (kg583)</td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%; text-align:right; opacity:0%">&copy;2022</td>
+                        <td style="width:50%;">& Walter Price</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="font-size:50%;">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:50%; text-align:right;">based on <a href="https://octordle.com" target="_blank">Octordle</a></td>
+                        <td style="width:50%;">by Kenneth Crawford</td>
                     </tr>
                 </table>
             </div>
@@ -210,10 +220,7 @@ table {
                 </table>
             </div>
             <div id="tutorial1" style="padding:12px;cursor:pointer;">
-                <img src="help_outline.svg" width="32" height="32">
-            </div>
-            <div id="giveordle" style="padding:12px;cursor:pointer;font-size: .75rem;">
-                #giveordle - <span id="giveordle-text"></span>
+                <img src="help_outline.svg" width="32" height="32" alt="">
             </div>
             <div class="box bg1" style="width: 60%; border:double;cursor:pointer;" id="daily">
                 <table style="width:100%;">
@@ -236,45 +243,19 @@ table {
                     </tr>
                 </table>
             </div>
-            <div class="button">&nbsp;</div>
-            <div class="box bg5" style="width: 60%; border:double;cursor:pointer;" id="free">
-                <table style="width:100%;">
-                    <tr>
-                        <td style="width:50%; text-align:right; color:black;">free</td>
-                        <td style="width:50%;">Octordle</td>
-                    </tr>
-                </table>
-            </div>
-            <div style="height:8px;">&nbsp;</div>
-            <div class="bg4" style="font-size:80%;">
-                <table style="width:100%; color:black;">
-                    <tr>
-                        <td style="width:50%; text-align:right;">play as much</td>
-                        <td style="width:50%;">as you want</td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:right;">every octordle</td>
-                        <td>is a surprise</td>
-                    </tr>
-                </table>
-            </div>
             <div style="height:32px;">&nbsp;</div>
             <div class="box" style="width: 60%; border:double;cursor:pointer;" id="widescreen-reset">
                 Reset Widescreen Mode
             </div>
-        </center>
+        </div>
     </div>
     <div id="tutorial" style="width:100%;height:100%;overflow:auto;padding-left:8px;padding-right:8px;font-size:50%;display:none;color:white;background-color:rgb(24, 26, 27);">
         <table style="width: 100%;font-size:200%;">
             <tr>
-                <td class="box" style="border: none; border-style: double; width:35%;cursor:pointer;" id="leave_tutorial">back</td>
+                <td class="box" style="width:35%;cursor:pointer;" id="leave_tutorial">back</td>
             </tr>
         </table>
-        <h3>#giveordle</h3>
-        <p>Recently Wordle exploded and brought joy to millions of people. It has inspired countless clones including Octordle that owe their success solely to Wordle.
-            Through Octordle, I ask that you add brightness to the world through doing good. Perhaps #giveordle will take off like Wordle did.</p>
-
-        <h3>Guess all eight OCTORDLE words in 13 tries.</h3>
+        <h3>Guess all four TOPICLE words in 7 tries.</h3>
         <p>Each guess must be a valid 5 letter word. Hit the enter button to submit.<br><br>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
         <h2>Examples</h2>
         <table style="width: 50%; border-spacing:0px;font-size:200%;">
@@ -324,7 +305,7 @@ table {
                 </td>
             </tr>
         </table>
-        <p>The letters C, O, M, F, Y are not in the word in any spot.<br><br>When you type a guess in OCTORDLE, you will guess that word for all eight words that you are solving. All eight words you are solving will be different.<br></p>
+        <p>The letters C, O, M, F, Y are not in the word in any spot.<br><br>When you type a guess in TOPICLE, you will guess that word for all four words that you are solving. All four words will be somehow related to the clue at the top of the page; each word will be different.<br></p>
         <table style="width: 100%; border-spacing:0px;font-size:200%;">
             <tr>
                 <td style="width: 50%; padding:0px;">
@@ -454,24 +435,23 @@ table {
                 <li>The bottom left word has the L in the wrong spot.</li>
                 <li>The bottom right word has the O in the right spot and the D in the wrong spot.</li>
             </ol>
-        </p>
-        <p>You have 13 guesses to get all 8 words correct. Good luck!</p>
-        <p>A new Octordle will be available each day!<br><br></p>
+        <p>You have 7 guesses to get all 4 words correct. Good luck!</p>
+        <p>A new Topicle will be available each day!<br><br></p>
     </div>
     <div id="game" style="display: none;flex-direction: column;" width="100%">
         <table style="width: 100%;">
             <tr>
-                <td class="box" style="border: none; border-style: double; width:25%;cursor:pointer;" id="restart">back</td>
-                <td class="box" style="border: none; border-style: double; width:20%;cursor:pointer;display:none;" id="reset_free">new</td>
+                <td class="box" style="width:25%;cursor:pointer;" id="restart">back</td>
+                <td class="box" style="width:20%;cursor:pointer;display:none;" id="reset_free">new</td>
                 <td style="width:*; text-align:center;font-size:75%;" id="game_title"></td>
                 <td id="tutorial2" style="padding:6px;cursor:pointer;width:32px;">
-                    <img src="help_outline.svg" width="32" height="32">
+                    <img src="help_outline.svg" width="32" height="32" alt="">
                 </td>
                 <td id="fullscreen" style="padding:6px;cursor:pointer;width:32px;display:none;">
-                    <img src="fullscreen.svg" width="32" height="32">
+                    <img src="fullscreen.svg" width="32" height="32" alt="">
                 </td>
                 <td id="exit_fullscreen" style="padding:6px;cursor:pointer;width:32px;display:none;">
-                    <img src="fullscreen_exit.svg" width="32" height="32">
+                    <img src="fullscreen_exit.svg" width="32" height="32" alt="">
                 </td>
             </tr>
         </table>
@@ -549,7 +529,7 @@ table {
             <table width="100%">
                 <tr height="14.2%">
                     <td rowspan=5 style="width:50%;">
-                        <textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=25 id="share_content">test</textarea>
+                        <label for="share_content"></label><textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=25 id="share_content">test</textarea>
                     </td>
                     <td style="font-size:75%; width:50%; text-align:center; vertical-align: top; padding-top: 15px;">
                         <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer12">&nbsp;</div>
@@ -566,7 +546,7 @@ table {
                 <tr height="14.2%">
                 </tr>
                 <tr height="14.2%">
-                    <td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;visibility:hidden;padding:8px;" id="share">
+                    <td class="box" style="font-size:50%;width:50%;cursor:pointer;visibility:hidden;padding:8px;" id="share">
                         share
                     </td>
                 </tr>
@@ -576,7 +556,7 @@ table {
                     </td>
                 </tr> -->
                 <tr height="14.2%">
-                    <td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;padding:8px;" id="share_clipboard">
+                    <td class="box" style="font-size:50%;width:50%;cursor:pointer;padding:8px;" id="share_clipboard">
                         copy to clipboard
                     </td>
                 </tr>
@@ -685,49 +665,6 @@ function makeBox(boxId, suffix) {
             <td class="box button" width="20%" id="box${boxId},7,4,${suffix}"></td>
             <td class="box button" width="20%" id="box${boxId},7,5,${suffix}"></td>
         </tr>
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},8,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},8,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},8,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},8,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},8,5,${suffix}"></td>
-        </tr>
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},9,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},9,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},9,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},9,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},9,5,${suffix}"></td>
-        </tr>
-
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},10,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},10,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},10,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},10,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},10,5,${suffix}"></td>
-        </tr>
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},11,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},11,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},11,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},11,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},11,5,${suffix}"></td>
-        </tr>
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},12,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},12,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},12,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},12,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},12,5,${suffix}"></td>
-        </tr>
-        <tr>
-            <td class="box button" width="20%" id="box${boxId},13,1,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},13,2,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},13,3,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},13,4,${suffix}"></td>
-            <td class="box button" width="20%" id="box${boxId},13,5,${suffix}"></td>
-        </tr>
     </table>`
 
     const container = document.createElement("div");
@@ -744,14 +681,14 @@ function setupBoxes() {
 
 
 
-const TOTAL_LINES = 13;
+const TOTAL_LINES = 7;
 const TOTAL_COLUMNS = 5;
-const TOTAL_BOXES = 8;
+const TOTAL_BOXES = 4;
 
 function forEachCell(callback) {
-    for(var line = 0; line < TOTAL_LINES; line++) {
-        for(var column = 0; column < TOTAL_COLUMNS; column++) {
-            for(var box = 0; box < TOTAL_BOXES; box++) {
+    for(let line = 0; line < TOTAL_LINES; line++) {
+        for(let column = 0; column < TOTAL_COLUMNS; column++) {
+            for(let box = 0; box < TOTAL_BOXES; box++) {
                 boxOperation(box, line, column, boxEl => {
                     callback(box, line, column, boxEl);
                 });
@@ -761,8 +698,8 @@ function forEachCell(callback) {
 }
 
 function forEachCellForLine(line, callback) {
-    for(var column = 0; column < TOTAL_COLUMNS; column++) {
-        for(var box = 0; box < TOTAL_BOXES; box++) {
+    for(let column = 0; column < TOTAL_COLUMNS; column++) {
+        for(let box = 0; box < TOTAL_BOXES; box++) {
             boxOperation(box, line, column, boxEl => {
                 callback(box, column, boxEl);
             });
@@ -771,7 +708,7 @@ function forEachCellForLine(line, callback) {
 }
 
 function forEachCellForLineColumn(line, column, callback) {
-    for(var box = 0; box < TOTAL_BOXES; box++) {
+    for(let box = 0; box < TOTAL_BOXES; box++) {
         boxOperation(box, line, column, boxEl => {
             callback(box, boxEl);
         });
@@ -780,13 +717,13 @@ function forEachCellForLineColumn(line, column, callback) {
 
 
 function el(n, t) {
-    e = document.createElement(n);
+    let e = document.createElement(n);
     if (t) e.appendChild(t);
     return e;
 }
 
 function newElement(_elementType, _parent, _className) {
-    e = document.createElement(_elementType);
+    let e = document.createElement(_elementType);
     if (_className) e.className = _className;
     if (_parent) {
         _parent.appendChild(e);
@@ -818,7 +755,7 @@ function ln(out) {
 }
 
 function printcolor(out, t, color, bgcolor, s) {
-    tx = document.createElement("span");
+    let tx = document.createElement("span");
     tx.innerHTML = t;
     tx.style.color = s ? bgcolor : color;
     tx.style.backgroundColor = s ? color : bgcolor;
@@ -844,7 +781,7 @@ function acquire(out) {
 
 function acquireBox(box, line, column, mode, callback) {
     mode = mode || "";
-    const el = acquire(`box${box + 1},${line + 1},${column + 1},${mode}`);
+    let el = acquire(`box${box + 1},${line + 1},${column + 1},${mode}`);
 
     if(!el) {
         debugger;
@@ -907,16 +844,16 @@ tutorial_mode = false;
 restoring_game = false;
 
 function pushHistory(paramsToSet) {
-    var searchParams = new URLSearchParams(location.search);
-    var paramsStringBefore = searchParams.toString()
-    for (var key of Object.keys(paramsToSet)) {
+    let searchParams = new URLSearchParams(location.search);
+    let paramsStringBefore = searchParams.toString();
+    for (let key of Object.keys(paramsToSet)) {
         if (paramsToSet[key] === undefined || paramsToSet[key] === null) {
             searchParams.delete(key);
         } else {
             searchParams.set(key, paramsToSet[key]);
         }
     }
-    var paramsString = searchParams.toString()
+    let paramsString = searchParams.toString();
     if (paramsString !== paramsStringBefore) {
         if (paramsString) {
             window.history.pushState({}, "", location.pathname + "?" + paramsString);
@@ -1009,9 +946,9 @@ function initFree() {
 }
 
 function onStateChange() {
-    var params = new URLSearchParams(location.search);
-    var mode = params.get("mode")
-    var tutorial = params.get("tutorial")
+    let params = new URLSearchParams(location.search);
+    let mode = params.get("mode");
+    let tutorial = params.get("tutorial");
     if (tutorial === "true") {
         initTutorial();
     } else if (mode === "daily") {
@@ -1026,7 +963,7 @@ function onStateChange() {
 window.addEventListener("popstate", onStateChange);
 
 function initTutorial() {
-    tutorial_mode = true
+    tutorial_mode = true;
     acquire("title").style.display = "none";
     acquire("game").style.display = "none";
     acquire("tutorial").style.display = "";
@@ -1036,8 +973,8 @@ function initTutorial() {
 }
 
 function initTitle() {
-    mode_leaving = daily_mode ? "daily" : "free";
-    seed_leaving = daily_mode ? seed : undefined;
+    var mode_leaving = daily_mode ? "daily" : "free";
+    var seed_leaving = daily_mode ? seed : undefined;
     daily_mode = false;
     free_mode = false;
     acquire("title").style.display = "";
@@ -1088,7 +1025,7 @@ function pressKey(e) {
 function pk(key, keyCode) {
     if (!daily_mode && !free_mode) return;
     if (line >= TOTAL_LINES) return;
-    if (keyCode == 8) {
+    if (keyCode === 8) {
         if (column <= 0) return;
         guess_current = guess_current.slice(0, guess_current.length - 1);
         column--;
@@ -1103,8 +1040,8 @@ function pk(key, keyCode) {
         test_real_word(line, guess_current);
         return;
     }
-    if (keyCode == 13) {
-        if (allowed.indexOf(guess_current) == -1 && answers.indexOf(guess_current) == -1) {
+    if (keyCode === 13) {
+        if (allowed.indexOf(guess_current) === -1 && answers.indexOf(guess_current) === -1) {
             guess_current = "";
             clear_line(line);
             test_real_word(line, guess_current);
@@ -1126,7 +1063,7 @@ function pk(key, keyCode) {
                     identify_guess(box, line, guess_current);
                 }
 
-                if (answer[box] == guess_current) {
+                if (answer[box] === guess_current) {
                     answer_correct[box] = line;
                 }
             });
@@ -1172,7 +1109,7 @@ function pk(key, keyCode) {
         }
         return;
     }
-    if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) == -1) return;
+    if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) === -1) return;
     if (column >= TOTAL_COLUMNS) return;
     forEachCellForLineColumn(line, column, (box, el) => {
         if (answer_correct[box] < 0) {
@@ -1208,7 +1145,7 @@ function show_post_game(show) {
 }
 
 function test_real_word(line, guess_current) {
-    var real = !(allowed.indexOf(guess_current) == -1 && answers.indexOf(guess_current) == -1)
+    var real = !(allowed.indexOf(guess_current) === -1 && answers.indexOf(guess_current) === -1)
     if (guess_current.length < TOTAL_COLUMNS) real = true;
     forEachCellForLine(line, (box, column, el) => {
         if (answer_correct[box] < 0) {
@@ -1233,13 +1170,13 @@ function time_to_next() {
         no_localstorage = true;
     }
     if (last_daily == null) return null;
-    var startDate = (new Date('01/24/2022'));
-    var nextDate = startDate.getTime() + ((int(last_daily) + 1) * 1000 * 3600 * 24);
-    var date = (new Date());
-    var timeLeftSeconds = (nextDate - date.getTime()) / 1000;
+    const startDate = (new Date('04/1/2022'));
+    let nextDate = startDate.getTime() + ((int(last_daily) + 1) * 1000 * 3600 * 24);
+    let date = (new Date());
+    let timeLeftSeconds = (nextDate - date.getTime()) / 1000;
 
-    var value = 0;
-    var name = ""
+    let value = 0;
+    let name = "";
     if (timeLeftSeconds < 0) return null;
     if (timeLeftSeconds < 60) {
         value = (timeLeftSeconds >> 0);
@@ -1256,7 +1193,7 @@ function time_to_next() {
 
 function setTimeToNext() {
     if (!no_localstorage) {
-        var next_description = time_to_next();
+        let next_description = time_to_next();
         if (next_description == null) printclear(acquire("next_daily"), "every day");
         else printclear(acquire("next_daily"), "(next in " + next_description + ")");
     }
@@ -1271,15 +1208,15 @@ function restart() {
     show_post_game(false);
 
     if (daily_mode) {
-        var date = (new Date());
-        var startDate = (new Date('01/24/2022'));
+        let date = (new Date());
+        const startDate = (new Date('04/1/2022'));
         seed = ((date.getTime() - startDate.getTime()) / (1000 * 3600 * 24)) >> 0;
 
         printclear(acquire("game_title"), "daily octordle #" + seed.toString(10).padStart(4, "0"));
         last_daily = seed;
         if (!no_localstorage) {
             try {
-                var prevDaily = window.localStorage.getItem("last_daily");
+                let prevDaily = window.localStorage.getItem("last_daily");
                 window.localStorage.setItem("last_daily", seed);
                 if (String(seed) !== prevDaily) {
                     window.localStorage.setItem("daily_guesses", "");
@@ -1292,7 +1229,7 @@ function restart() {
     } else if (free_mode) {
         if (!no_localstorage) {
             try {
-                var freeSeed = window.localStorage.getItem("last_free");
+                let freeSeed = window.localStorage.getItem("last_free");
                 if (freeSeed) {
                     rnd = new MersenneTwister(Number(freeSeed));
                 } else {
@@ -1329,7 +1266,7 @@ function restart() {
             answers[rnd.genrand_int31() % answers.length],
             answers[rnd.genrand_int31() % answers.length],
         ];
-    } while (new Set(answer).size != TOTAL_BOXES);
+    } while (new Set(answer).size !== TOTAL_BOXES);
 
     line = 0;
     column = 0;
@@ -1339,7 +1276,7 @@ function restart() {
     share = [[], [], [], [], [], [], [], []];
     guess_current = "";
 
-    for (var l = 0; l < TOTAL_LINES; l++) {
+    for (let l = 0; l < TOTAL_LINES; l++) {
         clear_line(l);
         share.forEach(share => share.push("\u2B1B\u2B1B\u2B1B\u2B1B\u2B1B"))
     }
@@ -1396,9 +1333,9 @@ function clear_line(line) {
 }
 
 function identify_guess(i, line, guess) {
-    var ans = answer[i].split("");
-    var gue = guess.split("");
-    var icons = [];
+    let ans = answer[i].split("");
+    let gue = guess.split("");
+    let icons = [];
     for (column = 0; column < TOTAL_COLUMNS; column++) {
         guess_letters[i][gue[column]] = 0;
         boxOperation(i, line, column, box => {
@@ -1407,7 +1344,7 @@ function identify_guess(i, line, guess) {
         icons.push('\u2B1C');
     }
     for (column = 0; column < TOTAL_COLUMNS; column++) {
-        if (ans[column] == gue[column]) {
+        if (ans[column] === gue[column]) {
             boxOperation(i, line, column, box => {
                 box.style.backgroundColor = "#00cc88";
                 box.style.color = "black";
@@ -1419,12 +1356,12 @@ function identify_guess(i, line, guess) {
         }
     }
     for (column = 0; column < TOTAL_COLUMNS; column++) {
-        if (ans.indexOf(gue[column]) != -1 && ans[column] != gue[column] && gue[column] != " ") {
+        if (ans.indexOf(gue[column]) !== -1 && ans[column] !== gue[column] && gue[column] !== " ") {
             boxOperation(i, line, column, box => {
                 box.style.backgroundColor = "#ffcc00";
                 box.style.color = "black";
             });
-            if (guess_letters[i][gue[column]] != 2) guess_letters[i][gue[column]] = 1;
+            if (guess_letters[i][gue[column]] !== 2) guess_letters[i][gue[column]] = 1;
             ans[ans.indexOf(gue[column])] = " ";
             icons[column] = ("\uD83D\uDFE8");
         }
@@ -1563,7 +1500,7 @@ acquire("reset_free").onclick = function() {
     }
 }
 
-const emojiMap = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟", "🕚", "🕛", "🕐", "🕑"]
+const emojiMap = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣"]
 
 function get_num_emoji(num) {
     if (num < 0) {
@@ -1603,12 +1540,17 @@ function roundRect(ctx, x, y, width, height, radius) {
 }
 
 function do_share(copy, shareType) {
+    let color;
+    let pair;
+    let emojiStr;
+    let i;
     printclear(acquire("answer12"), answer[0].toUpperCase() + " - " + answer[1].toUpperCase());
     printclear(acquire("answer34"), answer[2].toUpperCase() + " - " + answer[3].toUpperCase());
     printclear(acquire("answer56"), answer[4].toUpperCase() + " - " + answer[5].toUpperCase());
     printclear(acquire("answer78"), answer[6].toUpperCase() + " - " + answer[7].toUpperCase());
 
-    var shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) && answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0;
+    let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) && answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0;
+    let text_share;
     if (daily_mode) {
         text_share = "Daily Octordle #" + seed.toString(10) + "\n" +
             get_num_emoji(answer_correct[0]) +
@@ -1632,39 +1574,39 @@ function do_share(copy, shareType) {
     }
 
     text_share += "\noctordle.com";
-    text_mobile_share = text_share
+    let text_mobile_share = text_share;
     text_share += "\n"
 
 
-    var l1 = line - 1;
+    let l1 = line - 1;
     if (answer_correct[0] >= 0 && answer_correct[1] >= 0 ) {
         l1 = Math.max(answer_correct[0], answer_correct[1])
     }
-    var l2 = line - 1;
+    let l2 = line - 1;
     if (answer_correct[2] >= 0 && answer_correct[3] >= 0) {
         l2 = Math.max(answer_correct[2], answer_correct[3])
     }
-    var l3 = line - 1;
+    let l3 = line - 1;
     if (answer_correct[4] >= 0 && answer_correct[5] >= 0) {
         l3 = Math.max(answer_correct[4], answer_correct[5])
     }
-    var l4 = line - 1;
+    let l4 = line - 1;
     if (answer_correct[6] >= 0 && answer_correct[7] >= 0) {
         l4 = Math.max(answer_correct[6], answer_correct[7])
     }
-    for (var i = 0; i <= l1; i++) {
+    for (i = 0; i <= l1; i++) {
         text_share += share[0][i] + " " + share[1][i] + "\n";
     }
     text_share += "\n"
-    for (var i = 0; i <= l2; i++) {
+    for (i = 0; i <= l2; i++) {
         text_share += share[2][i] + " " + share[3][i] + "\n";
     }
     text_share += "\n"
-    for (var i = 0; i <= l3; i++) {
+    for (i = 0; i <= l3; i++) {
         text_share += share[4][i] + " " + share[5][i] + "\n";
     }
     text_share += "\n"
-    for (var i = 0; i <= l4; i++) {
+    for (i = 0; i <= l4; i++) {
         text_share += share[6][i] + " " + share[7][i] + "\n";
     }
 
@@ -1695,27 +1637,27 @@ function do_share(copy, shareType) {
                 text: text_share,
             });
         } else if (shareType === "image") {
-            var size = 64;
-            var padding = size / 16;
-            var radius = size / 8;
-            var fontScale = 0.75;
-            var textPadding = size / 4;
-            const canvas = document.querySelector("#canvas");
+            let size = 64;
+            let padding = size / 16;
+            let radius = size / 8;
+            let fontScale = 0.75;
+            let textPadding = size / 4;
+            let canvas = document.querySelector("#canvas");
             canvas.width = (size + padding) * 11 - padding
             canvas.height = (size + padding) * (l1 + 1 + l2 + 1 + l3 + 1 + l4 + 1 + 4) - padding;
-            const ctx = canvas.getContext("2d");
+            let ctx = canvas.getContext("2d");
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // draw words 1 + 2
-            var x = 0;
-            var y = 0;
-            for (var i = 0; i <= l1; i++) {
-                var emojiStr = share[0][i];
+            let x = 0;
+            let y = 0;
+            for (i = 0; i <= l1; i++) {
+                emojiStr = share[0][i];
                 x = 0;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1725,8 +1667,8 @@ function do_share(copy, shareType) {
                 emojiStr = share[1][i];
                 x = 6;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1741,16 +1683,16 @@ function do_share(copy, shareType) {
             ctx.textBaseline = "alphabetic";
             ctx.fillStyle = "#ffffff";
 
-            var titleText = daily_mode ? "Daily Octordle #" + seed.toString(10) : "Octordle";
-            var metrics = ctx.measureText(titleText);
-            var fontHeight = metrics.actualBoundingBoxAscent;
+            let titleText = daily_mode ? "Daily Topicle #" + seed.toString(10) : "Topicle";
+            let metrics = ctx.measureText(titleText);
+            let fontHeight = metrics.actualBoundingBoxAscent;
             ctx.fillText(titleText, canvas.width / 2, y * (size + padding) + size - (size - fontHeight) / 2, canvas.width - textPadding * 2);
             y++;
-            for (var row = 0; row < 4; row++) {
-                for (var i = 0; i < 2; i++) {
+            for (let row = 0; row < 4; row++) {
+                for (i = 0; i < 2; i++) {
                     ctx.fillStyle = answer_correct[i + row * 2] >= 0 ? "#00a6ed" : "#f8312f";
-                    var dir = (i * 2 - 1)
-                    var xTopCenter = canvas.width / 2 + dir * (padding / 2) + dir * (size / 2)
+                    let dir = (i * 2 - 1);
+                    let xTopCenter = canvas.width / 2 + dir * (padding / 2) + dir * (size / 2);
                     roundRect(ctx, xTopCenter - size / 2, y * (size + padding), size, size, radius);
                     if (answer_correct[i + row * 2] >= 0) {
                         ctx.textAlign = "center";
@@ -1769,7 +1711,7 @@ function do_share(copy, shareType) {
                 if (free_mode && shouldShowWords) {
                     ctx.textAlign = "right";
                     ctx.fillStyle = "#ffffff";
-                    var wordText = answer[0 + row * 2].toUpperCase()
+                    let wordText = answer[row * 2].toUpperCase();
                     metrics = ctx.measureText(wordText);
                     fontHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
                     ctx.fillText(
@@ -1798,12 +1740,12 @@ function do_share(copy, shareType) {
             y++;
 
             // draw words 3 + 4
-            for (var i = 0; i <= l2; i++) {
-                var emojiStr = share[2][i];
+            for (i = 0; i <= l2; i++) {
+                emojiStr = share[2][i];
                 x = 0;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1813,8 +1755,8 @@ function do_share(copy, shareType) {
                 emojiStr = share[3][i];
                 x = 6;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1824,12 +1766,12 @@ function do_share(copy, shareType) {
             }
 
             // draw words 5 + 6
-            for (var i = 0; i <= l3; i++) {
-                var emojiStr = share[4][i];
+            for (i = 0; i <= l3; i++) {
+                emojiStr = share[4][i];
                 x = 0;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1839,8 +1781,8 @@ function do_share(copy, shareType) {
                 emojiStr = share[5][i];
                 x = 6;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1850,12 +1792,12 @@ function do_share(copy, shareType) {
             }
 
             // draw words 7 + 8
-            for (var i = 0; i <= l3; i++) {
-                var emojiStr = share[6][i];
+            for (i = 0; i <= l3; i++) {
+                emojiStr = share[6][i];
                 x = 0;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1865,8 +1807,8 @@ function do_share(copy, shareType) {
                 emojiStr = share[7][i];
                 x = 6;
                 while (emojiStr) {
-                    var pair = get_next_color_from_emojis(emojiStr)
-                    var color = pair[0]
+                    pair = get_next_color_from_emojis(emojiStr);
+                    color = pair[0];
                     emojiStr = pair[1]
                     ctx.fillStyle = color;
                     roundRect(ctx, x * (size + padding), y * (size + padding), size, size, radius);
@@ -1876,7 +1818,7 @@ function do_share(copy, shareType) {
             }
 
             canvas.toBlob(function(blob) {
-                var file = new File([blob], "octordle.png", { type: "image/png" });
+                let file = new File([blob], "topicle.png", {type: "image/png"});
                 navigator.share({
                     files: [file],
                     text: text_mobile_share
@@ -1887,34 +1829,35 @@ function do_share(copy, shareType) {
 }
 
 function render_bg_keys() {
-    var keys = "abcdefghijklmnopqrstuvwxyz".split("");
+    const keys = "abcdefghijklmnopqrstuvwxyz".split("");
 
-    var pos = " 50%"
+    let pos = " 50%";
     if (answer_correct[0] < 0 && answer_correct[1] >= 0) pos = " 90%";
     if (answer_correct[1] < 0 && answer_correct[0] >= 0) pos = " 10%";
 
     for (k in keys) {
-        var keyGuessed = false
-        var keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"]
-        var colorOptions = ["#919191", "#ffcc00", "#00cc88"]
-        var gradStrArr = [];
-        for (var g = 0; g < keyColors.length; g++) {
-            for (var i = 0; i < colorOptions.length; i++) {
-                if (guess_letters[g][keys[k]] == i) {
+        let g;
+        let keyGuessed = false;
+        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
+        const colorOptions = ["#919191", "#ffcc00", "#00cc88"];
+        let gradStrArr = [];
+        for (g = 0; g < keyColors.length; g++) {
+            for (let i = 0; i < colorOptions.length; i++) {
+                if (guess_letters[g][keys[k]] === i) {
                     keyColors[g] = colorOptions[i]
                     keyGuessed = true
                 }
             }
         }
 
-        for (var g = 0; g < keyColors.length; g++) {
+        for (g = 0; g < keyColors.length; g++) {
             if (keyGuessed && keyColors[g] === "rgb(24, 26, 27)") {
                 keyColors[g] = "#5c5c5c"
             }
             gradStrArr.push("linear-gradient(45deg, " + keyColors[g] + ", " + keyColors[g] + ")");
         }
-        var bg = gradStrArr.join(",");
-        var key = acquire(keys[k])
+        let bg = gradStrArr.join(",");
+        let key = acquire(keys[k]);
         key.style.backgroundImage = bg
         key.style.backgroundSize = "51% 26%";
         key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 33%, 100% 33%, 0% 66%, 100% 66%, 0% 100%, 100% 100%"
@@ -1965,51 +1908,6 @@ window.onresize();
 
 setupBoxes();
 onStateChange();
-
-(function init() {
-    var giveordles = [
-        "Shout out to Les, Jess, Brad, Tina, Lisa, Matt A! ♥",
-        "Donate to your favorite non-profit",
-        "Do a little cleaning at home",
-        "Introduce yourself to someone new",
-        "Compliment someone",
-        "Pet an animal",
-        "Call a parent or child and tell them you love them",
-        "Tip a little extra",
-        "Clean up some litter",
-        "Tweet your favorite musician, especially less known ones. @portugaltheman @AesopRockWins",
-        "Give instead of take",
-        "Buy somebody coffee",
-        "Text that friend you've been thinking about but haven't texted",
-        "Buy a book for somebody",
-        "Workout! a little or a lot",
-        "Donate blood",
-        "Give a loved one a gift",
-        "Let it go",
-        "Recycle something today",
-        "Help the new person at work",
-        "Make a meal for someone",
-        "Let it be",
-        "Volunteer this weekend",
-        "Put a stray shopping cart away. Cart-Narc! Whoop Whoop!",
-        "Buy someone flowers",
-        "Smile at someone"
-    ];
-
-    var diff = new Date() - new Date('02/23/2022');
-    var days = Math.floor(diff / (1000 * 60 *60 *24));
-
-    var todaysGiveordle = giveordles[days % giveordles.length];
-
-    if(todaysGiveordle) {
-        var giveordle = acquire('giveordle-text');
-        clear(giveordle);
-        ppint(giveordle, todaysGiveordle);
-    } else{
-        var giveordle = acquire('giveordle');
-        clear(giveordle);
-    }
-})();
 
 </script>
 </body>
