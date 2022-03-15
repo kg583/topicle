@@ -1284,9 +1284,9 @@ function restart() {
     line = 0;
     column = 0;
     guesses = [];
-    guess_letters = [{}, {}, {}, {}, {}, {}, {}, {}];
-    answer_correct = [-1, -1, -1, -1, -1, -1, -1, -1];
-    share = [[], [], [], [], [], [], [], []];
+    guess_letters = [{}, {}, {}, {}];
+    answer_correct = [-1, -1, -1, -1];
+    share = [[], [], [], []];
     guess_current = "";
 
     for (let l = 0; l < TOTAL_LINES; l++) {
