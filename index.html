@@ -64,14 +64,8 @@ a {
 }
 
 .button {
-    width: var(--boxsize);
-    height: var(--boxsize);
-}
-
-:root {
-    --boxsize: 50px;
-    --spacing: 0px;
-    --collapse: ;
+    width: 50px;
+    height: 50px;
 }
 
 .box {
@@ -81,7 +75,7 @@ a {
     text-align: center;
     background-color: rgb(24, 26, 27);
     overflow: hidden;
-    border-spacing: var(--spacing);
+    border-spacing: 0px;
     color: white;
 
     user-select: none;
@@ -488,7 +482,7 @@ table {
                 No
             </td>
         </table>
-        <div style="text-align: center;" id="clue">NULL</div>
+        <div style="text-align: center;" id="clue"></div>
         <div id="normal-container" style="width: 100%;flex: 1;overflow: auto;">
             <table style="width: 100%; border-spacing:0px;">
                 <tr>
@@ -1193,6 +1187,7 @@ setTimeToNext();
 
 function restart() {
     acquire("body").style.backgroundColor = "rgb(24, 26, 27)";
+    acquire("clue").style.color = "white";
 
     show_post_game(false);
 
@@ -1201,7 +1196,7 @@ function restart() {
         const startDate = (new Date('04/1/2022'));
         seed = ((date.getTime() - startDate.getTime()) / (1000 * 3600 * 24)) >> 0;
 
-        printclear(acquire("game_title"), "daily topicle #" + seed.toString(10).padStart(4, "0"));
+        printclear(acquire("game_title"), "topicle #" + seed.toString(10).padStart(4, "0"));
         last_daily = seed;
         if (!no_localstorage) {
             try {
@@ -1247,6 +1242,9 @@ function restart() {
             answers[rnd.genrand_int31() % answers.length]
         ];
     } while (new Set(answer).size !== TOTAL_BOXES);
+
+    clue = "null";
+    printclear(acquire("clue"), clue);
 
     line = 0;
     column = 0;
@@ -1530,13 +1528,13 @@ function do_share(copy, shareType) {
     let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) && answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0;
     let text_share;
     if (daily_mode) {
-        text_share = "Daily Topicle #" + seed.toString(10) + "\n" +
+        text_share = "Topicle #" + seed.toString(10) + "\n" +
             get_num_emoji(answer_correct[0]) +
             get_num_emoji(answer_correct[1]) + "\n" +
             get_num_emoji(answer_correct[2]) +
             get_num_emoji(answer_correct[3]);
     } else {
-        text_share = "Topicle\n" +
+        text_share = "Beta Topicle\n" +
             get_num_emoji(answer_correct[0]) +
             get_num_emoji(answer_correct[1]) + (shouldShowWords ? " " + answer[0].toUpperCase() + " - " + answer[1].toUpperCase() : "") + "\n" +
             get_num_emoji(answer_correct[2]) +
@@ -1545,7 +1543,8 @@ function do_share(copy, shareType) {
 
     text_share += "\nkg583.github.io/topicle";
     let text_mobile_share = text_share;
-    text_share += "\n"
+    text_share += "\n\n";
+    text_share += clue + "\n"
 
 
     let l1 = line - 1;
