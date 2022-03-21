@@ -18,7 +18,7 @@ with open("answers.csv") as file:
     dates = {(datetime.date(2024, 1, 1) + datetime.timedelta(days=n)).strftime("%B %#d") for n in range(366)}
     for row in csv.DictReader(file):
         if date := row["Date"]:
-            answers[date] = (row["Hint"],
+            answers[date] = (row["Hint"].replace("\"", ""),
                              [row["Word 1"], row["Word 2"], row["Word 3"], row["Word 4"]],
                              row["Category"].split(" "))
             dates.remove(date)
@@ -28,7 +28,7 @@ with open("answers.csv") as file:
         if not row["Date"]:
             date = random.choice(tuple(dates))
 
-            answers[date] = (row["Hint"],
+            answers[date] = (row["Hint"].replace("\"", ""),
                              [row["Word 1"], row["Word 2"], row["Word 3"], row["Word 4"]],
                              row["Category"].split(" "))
             dates.remove(date)
