@@ -1218,7 +1218,7 @@ function restart() {
                 no_localstorage = true;
             }
         }
-        if (!key) {
+        if (!key || int(key) != 0) {
             key = randomDate(new Date(2024, 1, 1), new Date(2024, 12, 31)).toLocaleDateString("en-US", {month: "long", day: "numeric"})
             window.localStorage.setItem("last_beta", key);
         }
