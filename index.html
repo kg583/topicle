@@ -1197,7 +1197,7 @@ function restart() {
         let date = (new Date());
         key = date.toLocaleDateString("en-US", {month: "long", day: "numeric"})
 
-        printclear(acquire("game_title"), "topicle - " + key);
+        printclear(acquire("game_title"), "Topicle - " + key);
         last_daily = key;
         if (!no_localstorage) {
             try {
@@ -1222,7 +1222,7 @@ function restart() {
             key = randomDate(new Date(2024, 1, 1), new Date(2024, 12, 31)).toLocaleDateString("en-US", {month: "long", day: "numeric"})
             window.localStorage.setItem("last_beta", key);
         }
-        printclear(acquire("game_title"), "beta topicle");
+        printclear(acquire("game_title"), "Beta Topicle");
     }
 
     entry = answers[key]
