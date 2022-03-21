@@ -18,6 +18,7 @@ with open("answers.csv") as file:
     dates = {(datetime.date(2024, 1, 1) + datetime.timedelta(days=n)).strftime("%B %#d") for n in range(366)}
     for row in csv.DictReader(file):
         if date := row["Date"]:
+            assert date not in answers
             answers[date] = (row["Hint"].replace("\"", ""),
                              [row["Word 1"], row["Word 2"], row["Word 3"], row["Word 4"]],
                              row["Category"].split(" "))
@@ -48,6 +49,7 @@ for hint in ordered:
         answers[entry] = ordered[hint][1][index]
 
 
+assert len(answers) == 366
 answers = dict(sorted(answers.items(), key=lambda p: sort_key(p[0])))
 with open("answers.js", "w+") as file:
     string = json.dumps(answers).replace("'", "\\'")
