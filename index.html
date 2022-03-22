@@ -562,40 +562,40 @@ table {
         </div>
         <table id="keyboard" style="width: 100%; max-width: 550px; margin: auto" class="table_guesses">
             <tr>
-                <td class="box button key" width="10%" id="q">Q</td>
-                <td class="box button key" width="10%" id="w">W</td>
-                <td class="box button key" width="10%" id="e">E</td>
-                <td class="box button key" width="10%" id="r">R</td>
-                <td class="box button key" width="10%" id="t">T</td>
-                <td class="box button key" width="10%" id="y">Y</td>
-                <td class="box button key" width="10%" id="u">U</td>
-                <td class="box button key" width="10%" id="i">I</td>
-                <td class="box button key" width="10%" id="o">O</td>
-                <td class="box button key" width="10%" id="p">P</td>
+                <td class="box button key" width="10%" id="Q">Q</td>
+                <td class="box button key" width="10%" id="W">W</td>
+                <td class="box button key" width="10%" id="E">E</td>
+                <td class="box button key" width="10%" id="R">R</td>
+                <td class="box button key" width="10%" id="T">T</td>
+                <td class="box button key" width="10%" id="Y">Y</td>
+                <td class="box button key" width="10%" id="U">U</td>
+                <td class="box button key" width="10%" id="I">I</td>
+                <td class="box button key" width="10%" id="O">O</td>
+                <td class="box button key" width="10%" id="P">P</td>
             </tr>
             <tr>
-                <td class="box button key" width="10%" id="a">A</td>
-                <td class="box button key" width="10%" id="s">S</td>
-                <td class="box button key" width="10%" id="d">D</td>
-                <td class="box button key" width="10%" id="f">F</td>
-                <td class="box button key" width="10%" id="g">G</td>
-                <td class="box button key" width="10%" id="h">H</td>
-                <td class="box button key" width="10%" id="j">J</td>
-                <td class="box button key" width="10%" id="k">K</td>
-                <td class="box button key" width="10%" id="l">L</td>
-                <td class="box button key" style="border-bottom:none;" width="10%" id="enter3"></td>
+                <td class="box button key" width="10%" id="A">A</td>
+                <td class="box button key" width="10%" id="S">S</td>
+                <td class="box button key" width="10%" id="D">D</td>
+                <td class="box button key" width="10%" id="F">F</td>
+                <td class="box button key" width="10%" id="G">G</td>
+                <td class="box button key" width="10%" id="H">H</td>
+                <td class="box button key" width="10%" id="J">J</td>
+                <td class="box button key" width="10%" id="K">K</td>
+                <td class="box button key" width="10%" id="L">L</td>
+                <td class="box button key" style="border-bottom:none;" width="10%" id="Enter3"></td>
             </tr>
             <tr>
-                <td class="box button key" width="10%" id="bs">&#x232B;</td>
-                <td class="box button key" width="10%" id="z">Z</td>
-                <td class="box button key" width="10%" id="x">X</td>
-                <td class="box button key" width="10%" id="c">C</td>
-                <td class="box button key" width="10%" id="v">V</td>
-                <td class="box button key" width="10%" id="b">B</td>
-                <td class="box button key" width="10%" id="n">N</td>
-                <td class="box button key" width="10%" id="m">M</td>
-                <td class="box button key" style="border-right: none;" width="10%" id="enter1"></td>
-                <td class="box button key" style="border-left: none; border-top:none;" width="10%" id="enter2">&#x23CE;</td>
+                <td class="box button key" width="10%" id="BS">&#x232B;</td>
+                <td class="box button key" width="10%" id="Z">Z</td>
+                <td class="box button key" width="10%" id="X">X</td>
+                <td class="box button key" width="10%" id="C">C</td>
+                <td class="box button key" width="10%" id="V">V</td>
+                <td class="box button key" width="10%" id="B">B</td>
+                <td class="box button key" width="10%" id="N">N</td>
+                <td class="box button key" width="10%" id="M">M</td>
+                <td class="box button key" style="border-right: none;" width="10%" id="Enter1"></td>
+                <td class="box button key" style="border-left: none; border-top:none;" width="10%" id="Enter2">&#x23CE;</td>
             </tr>
         </table>
         <div id="box button" style="visibility: hidden">Test</div>
@@ -1341,7 +1341,7 @@ function identify_guess(i, line, guess) {
     share[i][line] = icons.join("");
 }
 
-var keys = "abcdefghijklmnopqrstuvwxyz".split("")
+var keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 for (k in keys) {
     var acq = acquire(keys[k]);
     acq.key = keys[k];
@@ -1429,19 +1429,19 @@ if (document.addEventListener) {
     document.addEventListener('webkitfullscreenchange', fullscreenHandler, false);
 }
 
-acquire("enter1").onclick = function() {
+acquire("Enter1").onclick = function() {
     vibrate();
     pk_wrap("", 13);
 }
-acquire("enter2").onclick = function() {
+acquire("Enter2").onclick = function() {
     vibrate();
     pk_wrap("", 13);
 }
-acquire("enter3").onclick = function() {
+acquire("Enter3").onclick = function() {
     vibrate();
     pk_wrap("", 13);
 }
-acquire("bs").onclick = function() {
+acquire("BS").onclick = function() {
     vibrate();
     pk_wrap("", 8);
 }
@@ -1723,7 +1723,7 @@ function do_share(copy, shareType) {
 }
 
 function render_bg_keys() {
-    const keys = "abcdefghijklmnopqrstuvwxyz".split("");
+    const keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
     let pos = " 50%";
     if (answer_correct[0] < 0 && answer_correct[1] >= 0) pos = " 90%";
@@ -1732,8 +1732,8 @@ function render_bg_keys() {
     for (k in keys) {
         let g;
         let keyGuessed = false;
-        const keyColors = ["var(--black)", "var(--black)", "var(--black)", "var(--black)"];
-        const colorOptions = ["#919191", "var(--yellow)", "var(--green)"];
+        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
+        const colorOptions = ["#919191", "#ffcc00", "#00cc88"];
         let gradStrArr = [];
         for (g = 0; g < keyColors.length; g++) {
             for (let i = 0; i < colorOptions.length; i++) {
@@ -1745,18 +1745,18 @@ function render_bg_keys() {
         }
 
         for (g = 0; g < keyColors.length; g++) {
-            if (keyGuessed && keyColors[g] === "var(--black)") {
+            if (keyGuessed && keyColors[g] === "rgb(24, 26, 27)") {
                 keyColors[g] = "#5c5c5c"
             }
             gradStrArr.push("linear-gradient(45deg, " + keyColors[g] + ", " + keyColors[g] + ")");
         }
         let bg = gradStrArr.join(",");
-        let key = acquire(keys[k]);
-        key.style.backgroundImage = bg
-        key.style.backgroundSize = "50% 50%";
-        key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 100%, 100% 100%"
-        key.style.backgroundRepeat = "no-repeat"
-        key.style.color = keyGuessed ? "black" : "white"
+        let bg_key = acquire(keys[k]);
+        bg_key.style.backgroundImage = bg
+        bg_key.style.backgroundSize = "50% 50%";
+        bg_key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 100%, 100% 100%"
+        bg_key.style.backgroundRepeat = "no-repeat"
+        bg_key.style.color = keyGuessed ? "black" : "white"
         // key.style.textShadow = keyGuessed ? "0 0 4px white" : ""
     }
 }
