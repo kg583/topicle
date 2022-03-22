@@ -1484,9 +1484,9 @@ function get_num_emoji(num) {
 
 function get_next_color_from_emojis(emojis) {
     if (emojis.startsWith("\uD83D\uDFE9")) {
-        return ["var(--green)", emojis.replace("\uD83D\uDFE9", "")]; // green
+        return ["#00cc88", emojis.replace("\uD83D\uDFE9", "")]; // green
     } else if (emojis.startsWith("\uD83D\uDFE8")) {
-        return ["var(--yellow)", emojis.replace("\uD83D\uDFE8", "")]; // yellow
+        return ["#ffcc00", emojis.replace("\uD83D\uDFE8", "")]; // yellow
     } else if (emojis.startsWith("\u2B1C")) {
         return ["#e0e0e0", emojis.replace("\u2B1C", "")]; // white
     } else if (emojis.startsWith("\u2B1B")) {
