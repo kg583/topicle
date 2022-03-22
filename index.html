@@ -1732,8 +1732,8 @@ function render_bg_keys() {
     for (k in keys) {
         let g;
         let keyGuessed = false;
-        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
-        const colorOptions = ["#919191", "#ffcc00", "#00cc88"];
+        const keyColors = ["var(--black)", "var(--black)", "var(--black)", "var(--black)"];
+        const colorOptions = ["#919191", "var(--yellow)", "var(--green)"];
         let gradStrArr = [];
         for (g = 0; g < keyColors.length; g++) {
             for (let i = 0; i < colorOptions.length; i++) {
@@ -1745,7 +1745,7 @@ function render_bg_keys() {
         }
 
         for (g = 0; g < keyColors.length; g++) {
-            if (keyGuessed && keyColors[g] === "rgb(24, 26, 27)") {
+            if (keyGuessed && keyColors[g] === "var(--black)") {
                 keyColors[g] = "#5c5c5c"
             }
             gradStrArr.push("linear-gradient(45deg, " + keyColors[g] + ", " + keyColors[g] + ")");
