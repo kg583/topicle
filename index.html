@@ -519,19 +519,15 @@ table {
         </div>
         <div id="post_game">
             <table width="100%">
-                <tr height="14.2%">
+                <tr height="12%">
                     <td rowspan=5 style="width:50%;">
-                        <label for="share_content"></label><textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=25 id="share_content">test</textarea>
+                        <label for="share_content"></label><textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=20 id="share_content">test</textarea>
                     </td>
                     <td style="font-size:75%; width:50%; text-align:center; vertical-align: top; padding-top: 15px;">
-                        <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer12">&nbsp;</div>
-                        <div style="font-size:75%; width:50%; text-align:center; white-space: pre;" id="answer34">&nbsp;</div>
+                        <div style="font-size:100%; width:50%; text-align:center; white-space: pre;" id="answer12">&nbsp;</div>
+                        <div style="font-size:100%; width:50%; text-align:center; white-space: pre;" id="answer34">&nbsp;</div>
 
                     </td>
-                </tr>
-                <tr height="14.2%">
-                </tr>
-                <tr height="14.2%">
                 </tr>
                 <tr height="14.2%">
                 </tr>
@@ -540,16 +536,17 @@ table {
                         share
                     </td>
                 </tr>
-                <!-- <tr height="14.2%">
+                <tr height="14.2%">
                     <td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;visibility:hidden;padding:8px;" id="share_image">
                         share as image (twitter)
                     </td>
-                </tr> -->
+                </tr>
                 <tr height="14.2%">
                     <td class="box" style="font-size:50%;width:50%;cursor:pointer;padding:8px;" id="share_clipboard">
                         copy to clipboard
                     </td>
                 </tr>
+                <tr height="14.2%"></tr>
                 <!-- <tr height="20%">
                     <td class="box" style="border: none; border-style: double;font-size:50%;height:33%;align-items:middle;" >
                         <a id="tweet_link" href="https://twitter.com/share" target="_blank" style="display:block;width:100%;height:100%;text-decoration:none;">
@@ -1130,7 +1127,7 @@ function show_post_game(show) {
         acquire("post_game").style.display = "";
         acquire("keyboard").style.display = "none";
         acquire("share").style.visibility = navigator.share ? "" : "hidden";
-        //acquire("share_image").style.visibility = navigator.share ? "" : "hidden";
+        acquire("share_image").style.visibility = navigator.share ? "" : "hidden";
         do_share(false, "clipboard");
     } else {
         acquire("post_game").style.display = "none";
@@ -1458,9 +1455,9 @@ acquire("share").onclick = function() {
 acquire("share_clipboard").onclick = function() {
     do_share(true, "clipboard");
 }
-// acquire("share_image").onclick = function() {
-//     do_share(true, "image");
-// }
+acquire("share_image").onclick = function() {
+    do_share(true, "image");
+}
 acquire("reset_beta").onclick = function() {
     vibrate();
     if (isInWebViewiOS || confirm("Are you sure you want to start a new Beta Topicle? (The current game will be deleted)")) {
@@ -1517,7 +1514,7 @@ function do_share(copy, shareType) {
     printclear(acquire("answer12"), answer[0].toUpperCase() + " - " + answer[1].toUpperCase());
     printclear(acquire("answer34"), answer[2].toUpperCase() + " - " + answer[3].toUpperCase());
 
-    let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0) && answer_correct[4] >= 0 && answer_correct[5] >= 0 && answer_correct[6] >= 0 && answer_correct[7] >= 0;
+    let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0);
     let text_share;
     if (daily_mode) {
         text_share = "Topicle - " + key + "\n" +
@@ -1533,7 +1530,7 @@ function do_share(copy, shareType) {
             get_num_emoji(answer_correct[3]) + (shouldShowWords ? " " + answer[2].toUpperCase() + " - " + answer[3].toUpperCase() : "");
     }
 
-    text_share += "\nkg583.github.io/topicle";
+    text_share += "\nhttps://kg583.github.io/topicle";
     let text_mobile_share = text_share;
     text_share += "\n\n";
     text_share += clue + "\n"
@@ -1589,7 +1586,7 @@ function do_share(copy, shareType) {
             let textPadding = size / 4;
             let canvas = document.querySelector("#canvas");
             canvas.width = (size + padding) * 11 - padding
-            canvas.height = (size + padding) * (l1 + 1 + l2 + 1 + l3 + 1 + l4 + 1 + 4) - padding;
+            canvas.height = (size + padding) * (l1 + 1 + l2 + 1 + 4) - padding;
             let ctx = canvas.getContext("2d");
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -1633,7 +1630,7 @@ function do_share(copy, shareType) {
             let fontHeight = metrics.actualBoundingBoxAscent;
             ctx.fillText(titleText, canvas.width / 2, y * (size + padding) + size - (size - fontHeight) / 2, canvas.width - textPadding * 2);
             y++;
-            for (let row = 0; row < 4; row++) {
+            for (let row = 0; row < 2; row++) {
                 for (i = 0; i < 2; i++) {
                     ctx.fillStyle = answer_correct[i + row * 2] >= 0 ? "#00a6ed" : "#f8312f";
                     let dir = (i * 2 - 1);
@@ -1681,7 +1678,11 @@ function do_share(copy, shareType) {
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "#ffffff";
-            ctx.fillText("topicle", canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
+            if (beta_mode) {
+                ctx.fillText("Beta", canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
+            } else {
+                ctx.fillText(key, canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
+            }
             y++;
 
             // draw words 3 + 4
