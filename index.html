@@ -56,6 +56,12 @@ a {
     color: white;
 }
 
+:root {
+    --boxsize: 50px;
+    --spacing: 0px;
+    --collapse: separate;
+}
+
 .body-ios {
     height: -moz-calc(100% - 25px) !important;
     height: -webkit-calc(100% - 25px) !important;
@@ -64,8 +70,8 @@ a {
 }
 
 .button {
-    width: 50px;
-    height: 50px;
+    width: var(--boxsize);
+    height: var(--boxsize);
 }
 
 .box {
@@ -75,7 +81,7 @@ a {
     text-align: center;
     background-color: rgb(24, 26, 27);
     overflow: hidden;
-    border-spacing: 0px;
+    border-spacing: var(--spacing);
     color: white;
 
     user-select: none;
@@ -483,7 +489,7 @@ table {
             </td>
         </table>
         <div style="text-align: center;" id="clue"></div>
-        <div id="normal-container" style="width: 100%;flex: 1;overflow: auto;">
+        <div id="normal-container" style="width: 100%; flex: 1;overflow: auto;">
             <table style="width: 100%; border-spacing:0px;">
                 <tr>
                     <td style="width: 50%; padding:0px;" id="box-holder-1">
@@ -591,6 +597,7 @@ table {
                 <td class="box button key" style="border-left: none; border-top:none;" width="10%" id="enter2">&#x23CE;</td>
             </tr>
         </table>
+        <div id="box button" style="visibility: hidden">Test</div>
     </div>
 </div>
 
@@ -1009,7 +1016,8 @@ function pressKey(e) {
     pk_wrap(e.key.toLowerCase(), e.keyCode);
 }
 
-function pk(key, keyCode) {
+function pk(k, keyCode) {
+    k = k.toUpperCase();
     if (!daily_mode && !beta_mode) return;
     if (line >= TOTAL_LINES) return;
     if (keyCode === 8) {
@@ -1095,23 +1103,23 @@ function pk(key, keyCode) {
         }
         return;
     }
-    if ("abcdefghijklmnopqrstuvwxyz".indexOf(key) === -1) return;
+    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(k) === -1) return;
     if (column >= TOTAL_COLUMNS) return;
     forEachCellForLineColumn(line, column, (box, el) => {
         if (answer_correct[box] < 0) {
-            ppint(el, key.toUpperCase());
+            ppint(el, k);
         }
     });
 
-    guess_current += key.toUpperCase();
+    guess_current += k;
     column++;
     if (column >= TOTAL_COLUMNS) {
         test_real_word(line, guess_current);
     }
 }
 
-function pk_wrap(key, keyCode) {
-    pk(key, keyCode);
+function pk_wrap(k, keyCode) {
+    pk(k, keyCode);
     if ((daily_mode || beta_mode) && keyCode === 13) {
         update_local_storage();
     }
