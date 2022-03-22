@@ -1678,11 +1678,7 @@ function do_share(copy, shareType) {
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillStyle = "#ffffff";
-            if (beta_mode) {
-                ctx.fillText("Beta", canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
-            } else {
-                ctx.fillText(key, canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
-            }
+            ctx.fillText(clue, canvas.width / 2, y * (size + padding) + (size / 2), canvas.width);
             y++;
 
             // draw words 3 + 4
