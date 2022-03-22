@@ -42,12 +42,12 @@
 </script>
 <style>
 html {
-  background-color: rgb(24, 26, 27);
+  background-color: var(--black);
 }
 
 body {
     font-family: 'Outfit', sans-serif;
-    background-color: rgb(24, 26, 27);
+    background-color: var(--black);
     color: white;
     margin: 0;
 }
@@ -60,6 +60,10 @@ a {
     --boxsize: 50px;
     --spacing: 0px;
     --collapse: separate;
+
+    --yellow: #ffcc00;
+    --green: #00cc88;
+    --black: rgb(24, 26, 27);
 }
 
 .body-ios {
@@ -79,7 +83,7 @@ a {
 
     padding: 0px;
     text-align: center;
-    background-color: rgb(24, 26, 27);
+    background-color: var(--black);
     overflow: hidden;
     border-spacing: var(--spacing);
     color: white;
@@ -107,51 +111,51 @@ a {
 }
 
 .bg11 {
-    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #ffcc00, #ffcc00), linear-gradient(225deg, #00cc88, #00cc88), linear-gradient(225deg, #ffcc00, #ffcc00);
+    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, var(--yellow), var(--yellow)), linear-gradient(225deg, var(--green), var(--green)), linear-gradient(225deg, var(--yellow), var(--yellow));
 }
 
 .bg22 {
-    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, #00cc88, #00cc88), linear-gradient(225deg, #00cc88, #00cc88);
+    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, var(--green), var(--green)), linear-gradient(225deg, var(--green), var(--green));
 }
 
 .bg33 {
-    background-image: linear-gradient(45deg, #00cc88, #00cc88 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, #ffcc00, #ffcc00), linear-gradient(225deg, #00cc88, #00cc88);
+    background-image: linear-gradient(45deg, var(--green), var(--green) 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, var(--yellow), var(--yellow)), linear-gradient(225deg, var(--green), var(--green));
 }
 
 .bg44 {
-    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #ffcc00, #ffcc00), linear-gradient(225deg, #ffcc00, #ffcc00), linear-gradient(225deg, #919191, #919191);
+    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, var(--yellow), var(--yellow)), linear-gradient(225deg, var(--yellow), var(--yellow)), linear-gradient(225deg, #919191, #919191);
 }
 
 .bg55 {
-    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #00cc88, #00cc88), linear-gradient(225deg, #919191, #919191), linear-gradient(225deg, #919191, #919191);
+    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, var(--green), var(--green)), linear-gradient(225deg, #919191, #919191), linear-gradient(225deg, #919191, #919191);
 }
 
 .bg66 {
-    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, #919191, #919191), linear-gradient(225deg, #ffcc00, #ffcc00);
+    background-image: linear-gradient(45deg, #919191, #919191 100%), linear-gradient(135deg, #919191, #919191), linear-gradient(225deg, #919191, #919191), linear-gradient(225deg, var(--yellow), var(--yellow));
 }
 
 .bg1 {
-    background-image: linear-gradient(to right, rgb(24, 26, 27), rgb(24, 26, 27) 50%, #00cc88 50%, #00cc88);
+    background-image: linear-gradient(to right, var(--black), var(--black) 50%, var(--green) 50%, var(--green));
 }
 
 .bg2 {
-    background-image: linear-gradient(to right, rgb(24, 26, 27), rgb(24, 26, 27) 50%, #ffcc00 50%, #ffcc00);
+    background-image: linear-gradient(to right, var(--black), var(--black) 50%, var(--yellow) 50%, var(--yellow));
 }
 
 .bg3 {
-    background-image: linear-gradient(to right, #ffcc00, #ffcc00 50%, #00cc88 50%, #00cc88);
+    background-image: linear-gradient(to right, var(--yellow), var(--yellow) 50%, var(--green) 50%, var(--green));
 }
 
 .bg4 {
-    background-image: linear-gradient(to right, #00cc88, #00cc88 50%, #ffcc00 50%, #ffcc00);
+    background-image: linear-gradient(to right, var(--green), var(--green) 50%, var(--yellow) 50%, var(--yellow));
 }
 
 .bg5 {
-    background-image: linear-gradient(to right, #ffcc00, #ffcc00 50%, rgb(24, 26, 27) 50%, rgb(24, 26, 27));
+    background-image: linear-gradient(to right, var(--yellow), var(--yellow) 50%, var(--black) 50%, var(--black));
 }
 
 .bg6 {
-    background-image: linear-gradient(to right, #00cc88, #00cc88 50%, rgb(24, 26, 27) 50%, rgb(24, 26, 27));
+    background-image: linear-gradient(to right, var(--green), var(--green) 50%, var(--black) 50%, var(--black));
 }
 
 table {
@@ -270,7 +274,7 @@ table {
             </div>
         </center>
     </div>
-    <div id="tutorial" style="width:100%;height:100%;overflow:auto;padding-left:8px;padding-right:8px;font-size:50%;display:none;color:white;background-color:rgb(24, 26, 27);">
+    <div id="tutorial" style="width:100%;height:100%;overflow:auto;padding-left:8px;padding-right:8px;font-size:50%;display:none;color:white;background-color:var(--black);">
         <table style="width: 100%;font-size:200%;">
             <tr>
                 <td class="box" style="width:35%;cursor:pointer;" id="leave_tutorial">back</td>
@@ -284,7 +288,7 @@ table {
                 <td style="width: 50%; padding:0px;">
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
-                            <td class="box button" width="20%"  style="background-color:#00cc88;color:black;">C</td>
+                            <td class="box button" width="20%"  style="background-color:var(--green);color:black;">C</td>
                             <td class="box button" width="20%" >R</td>
                             <td class="box button" width="20%" >O</td>
                             <td class="box button" width="20%" >W</td>
@@ -301,7 +305,7 @@ table {
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
                             <td class="box button" width="20%" >B</td>
-                            <td class="box button" width="20%"  style="background-color:#ffcc00;color:black;">A</td>
+                            <td class="box button" width="20%"  style="background-color:var(--yellow);color:black;">A</td>
                             <td class="box button" width="20%" >D</td>
                             <td class="box button" width="20%" >G</td>
                             <td class="box button" width="20%" >E</td>
@@ -364,9 +368,9 @@ table {
                         <tr>
                             <td class="box button" width="20%" >S</td>
                             <td class="box button" width="20%">T</td>
-                            <td class="box button" width="20%" style="background-color:#ffcc00;color:black;">E</td>
+                            <td class="box button" width="20%" style="background-color:var(--yellow);color:black;">E</td>
                             <td class="box button" width="20%">E</td>
-                            <td class="box button" width="20%" style="background-color:#00cc88;color:black;">L</td>
+                            <td class="box button" width="20%" style="background-color:var(--green);color:black;">L</td>
                         </tr>
                     </table>
                     <table style="width: 100%;" class="table_guesses">
@@ -394,7 +398,7 @@ table {
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
                             <td class="box button" width="20%">S</td>
-                            <td class="box button" width="20%" style="background-color:#ffcc00;color:black;">T</td>
+                            <td class="box button" width="20%" style="background-color:var(--yellow);color:black;">T</td>
                             <td class="box button" width="20%">E</td>
                             <td class="box button" width="20%">E</td>
                             <td class="box button" width="20%">L</td>
@@ -424,8 +428,8 @@ table {
                         <tr>
                             <td class="box button" width="20%">S</td>
                             <td class="box button" width="20%">T</td>
-                            <td class="box button" width="20%" style="background-color:#00cc88;color:black;">E</td>
-                            <td class="box button" width="20%" style="background-color:#ffcc00;color:black;">E</td>
+                            <td class="box button" width="20%" style="background-color:var(--green);color:black;">E</td>
+                            <td class="box button" width="20%" style="background-color:var(--yellow);color:black;">E</td>
                             <td class="box button" width="20%">L</td>
                         </tr>
                     </table>
@@ -971,7 +975,7 @@ function initTitle() {
     acquire("title").style.display = "";
     acquire("game").style.display = "none";
     acquire("tutorial").style.display = "none";
-    acquire("body").style.backgroundColor = "rgb(24, 26, 27)";
+    acquire("body").style.backgroundColor = "var(--black)";
     exitFullscreen();
     if (window.gtag) {
         gtag("event", "back", {
@@ -1193,7 +1197,7 @@ setInterval(setTimeToNext, 1000);
 setTimeToNext();
 
 function restart() {
-    acquire("body").style.backgroundColor = "rgb(24, 26, 27)";
+    acquire("body").style.backgroundColor = "var(--black)";
     acquire("clue").style.color = "white";
 
     show_post_game(false);
@@ -1295,7 +1299,7 @@ function clear_line(line) {
     forEachCellForLine(line, (box, column, el) => {
         clear(el, "");
         el.style.color = "white";
-        el.style.backgroundColor = "rgb(24, 26, 27)";
+        el.style.backgroundColor = "var(--black)";
     });
 }
 
@@ -1306,14 +1310,14 @@ function identify_guess(i, line, guess) {
     for (column = 0; column < TOTAL_COLUMNS; column++) {
         guess_letters[i][gue[column]] = 0;
         boxOperation(i, line, column, box => {
-            box.style.backgroundColor = "rgb(24, 26, 27)";
+            box.style.backgroundColor = "var(--black)";
         });
         icons.push('\u2B1C');
     }
     for (column = 0; column < TOTAL_COLUMNS; column++) {
         if (ans[column] === gue[column]) {
             boxOperation(i, line, column, box => {
-                box.style.backgroundColor = "#00cc88";
+                box.style.backgroundColor = "var(--green)";
                 box.style.color = "black";
             });
             ans[column] = " ";
@@ -1325,7 +1329,7 @@ function identify_guess(i, line, guess) {
     for (column = 0; column < TOTAL_COLUMNS; column++) {
         if (ans.indexOf(gue[column]) !== -1 && ans[column] !== gue[column] && gue[column] !== " ") {
             boxOperation(i, line, column, box => {
-                box.style.backgroundColor = "#ffcc00";
+                box.style.backgroundColor = "var(--yellow)";
                 box.style.color = "black";
             });
             if (guess_letters[i][gue[column]] !== 2) guess_letters[i][gue[column]] = 1;
@@ -1480,9 +1484,9 @@ function get_num_emoji(num) {
 
 function get_next_color_from_emojis(emojis) {
     if (emojis.startsWith("\uD83D\uDFE9")) {
-        return ["#00cc88", emojis.replace("\uD83D\uDFE9", "")]; // green
+        return ["var(--green)", emojis.replace("\uD83D\uDFE9", "")]; // green
     } else if (emojis.startsWith("\uD83D\uDFE8")) {
-        return ["#ffcc00", emojis.replace("\uD83D\uDFE8", "")]; // yellow
+        return ["var(--yellow)", emojis.replace("\uD83D\uDFE8", "")]; // yellow
     } else if (emojis.startsWith("\u2B1C")) {
         return ["#e0e0e0", emojis.replace("\u2B1C", "")]; // white
     } else if (emojis.startsWith("\u2B1B")) {
@@ -1728,8 +1732,8 @@ function render_bg_keys() {
     for (k in keys) {
         let g;
         let keyGuessed = false;
-        const keyColors = ["rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)", "rgb(24, 26, 27)"];
-        const colorOptions = ["#919191", "#ffcc00", "#00cc88"];
+        const keyColors = ["var(--black)", "var(--black)", "var(--black)", "var(--black)"];
+        const colorOptions = ["#919191", "var(--yellow)", "var(--green)"];
         let gradStrArr = [];
         for (g = 0; g < keyColors.length; g++) {
             for (let i = 0; i < colorOptions.length; i++) {
@@ -1741,7 +1745,7 @@ function render_bg_keys() {
         }
 
         for (g = 0; g < keyColors.length; g++) {
-            if (keyGuessed && keyColors[g] === "rgb(24, 26, 27)") {
+            if (keyGuessed && keyColors[g] === "var(--black)") {
                 keyColors[g] = "#5c5c5c"
             }
             gradStrArr.push("linear-gradient(45deg, " + keyColors[g] + ", " + keyColors[g] + ")");
