@@ -1,10 +1,12 @@
 import unidecode
 
+from .randomizer import answers
+
 
 allowed = set()
 MIN = 119
 
-with open("enwiki-20210820-words-frequency.txt", encoding='utf-8') as file:
+with open("data/enwiki-20210820-words-frequency.txt", encoding='utf-8') as file:
     for line in file.readlines():
         word, count = line.split()
         if int(count) >= MIN:
@@ -13,6 +15,16 @@ with open("enwiki-20210820-words-frequency.txt", encoding='utf-8') as file:
                 allowed.add(word.upper())
 
 
+with open("data/words.txt") as file:
+    for line in file.readlines():
+        allowed.add(line.strip().upper())
+
+
+for _, entry in answers.items():
+    for word in entry[1]:
+        allowed.add(word.upper())
+
+
 allowed = sorted(allowed)
-with open("allowed.js", "w+") as file:
+with open("data/allowed.js", "w+") as file:
     file.write(f"allowed = '{' '.join(allowed)}'.split(' ')")
