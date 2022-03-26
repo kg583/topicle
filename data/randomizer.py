@@ -50,6 +50,7 @@ def swap(k1: str, k2: str):
 answers = {}
 ordered = {}
 
+# Fixed dates
 with open("data/answers.csv") as file:
     dates = {(datetime.date(2024, 1, 1) + datetime.timedelta(days=n)).strftime("%B %#d") for n in range(366)}
     for row in csv.DictReader(file):
@@ -59,6 +60,7 @@ with open("data/answers.csv") as file:
                 answers[date] = (row["Hint"].replace("\"", ""), words, row["Category"].split(" "), False)
                 dates.remove(date)
 
+# Remaining puzzles
 with open("data/answers.csv") as file:
     for row in csv.DictReader(file):
         if row["Approval"].lower() == "good" and row["Hint"] and all(words := get_words(row)):
@@ -81,6 +83,7 @@ with open("data/answers.csv") as file:
 answers = dict(sorted(answers.items(), key=lambda p: sort_key(p[0])))
 current = score()
 
+# Category spread maximization
 for _ in range(MIX):
     a, b = random.choices(list(answers.keys()), k=2)
     swap(a, b)
@@ -90,11 +93,13 @@ for _ in range(MIX):
         current = future
 
 
+# Ordered clue sorting
 for hint in ordered:
     for index, entry in enumerate(sorted(ordered[hint][0], key=sort_key)):
         answers[entry] = ordered[hint][1][index]
 
 
+# Final write
 answers = dict(sorted(((answer, tup[:3]) for answer, tup in answers.items()), key=lambda p: sort_key(p[0])))
 with open("data/answers_new.js", "w+") as file:
     string = json.dumps(answers).replace("'", "\\'")
