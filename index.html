@@ -1548,6 +1548,7 @@ function do_share(copy, shareType) {
     printclear(acquire("answer34"), answer[2].toUpperCase() + " - " + answer[3].toUpperCase());
 
     let shouldShowWords = line >= TOTAL_LINES || (answer_correct[0] >= 0 && answer_correct[1] >= 0 && answer_correct[2] >= 0 && answer_correct[3] >= 0);
+    shouldShowWords = false;
     let text_share;
     if (daily_mode) {
         text_share = "Topicle - " + key + "\n" +
