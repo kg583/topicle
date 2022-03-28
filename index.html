@@ -1759,6 +1759,8 @@ function render_bg_keys() {
     if (answer_correct[0] < 0 && answer_correct[1] >= 0) pos = " 90%";
     if (answer_correct[1] < 0 && answer_correct[0] >= 0) pos = " 10%";
 
+    let widescreen = localStorage.getItem("widescreen");
+
     for (k in keys) {
         let g;
         let keyGuessed = false;
@@ -1782,9 +1784,16 @@ function render_bg_keys() {
         }
         let bg = gradStrArr.join(",");
         let bg_key = acquire(keys[k]);
-        bg_key.style.backgroundImage = bg
-        bg_key.style.backgroundSize = "50% 50%";
-        bg_key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 100%, 100% 100%"
+
+        if (widescreen === "yes") {
+            bg_key.style.backgroundImage = bg
+            bg_key.style.backgroundSize = "25% 100%";
+            bg_key.style.backgroundPosition = "0% 0%, 33% 0%, 66% 0%, 100% 0%";
+        } else {
+            bg_key.style.backgroundImage = bg
+            bg_key.style.backgroundSize = "50% 50%";
+            bg_key.style.backgroundPosition = "0% 0%, 100% 0%, 0% 100%, 100% 100%";
+        }
         bg_key.style.backgroundRepeat = "no-repeat"
         bg_key.style.color = keyGuessed ? "black" : "white"
         // key.style.textShadow = keyGuessed ? "0 0 4px white" : ""
