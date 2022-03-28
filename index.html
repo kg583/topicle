@@ -2,7 +2,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Topicle</title>
-<meta name="description" content="Put your skills to the test and solve four themed Wordles at once! You have 7 guesses to match all four words to the clue. A new Topicle available each day to solve.">
+<meta name="description" content="Put your skills to the test and solve four themed Wordles at once! You have 8 guesses to match all four words to the clue. A new Topicle available each day to solve.">
 <meta name="keywords" content="Topicle, Quordle, Wordle, word game, clue, puzzle, brain teaser, guess, match">
 <meta name="author" content="Kevin Gomez & Walter Price">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://kg583.github.io/topicle">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Topicle">
-<meta property="og:description" content="Put your skills to the test and solve four themed Wordles at once! You have 7 guesses to match all four words to the clue. A new Topicle will be available each day to solve.">
+<meta property="og:description" content="Put your skills to the test and solve four themed Wordles at once! You have 8 guesses to match all four words to the clue. A new Topicle will be available each day to solve.">
 <meta property="og:image" content="https://kg583.github.io/topicle/banner.png">
 <meta property="og:image:width" content="800">
 <meta property="og:image:height" content="500">
@@ -280,7 +280,7 @@ table {
                 <td class="box" style="width:35%;cursor:pointer;" id="leave_tutorial">back</td>
             </tr>
         </table>
-        <h3>Guess all four TOPICLE words in 7 tries.</h3>
+        <h3>Guess all four TOPICLE words in 8 tries.</h3>
         <p>Each guess must be a valid 5 letter word. Hit the enter button to submit.<br><br>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
         <h2>Examples</h2>
         <table style="width: 50%; border-spacing:0px;font-size:200%;">
@@ -363,6 +363,7 @@ table {
                         </tr>
                     </table>
                 </td>
+                <td></td>
                 <td style="width: 50%; padding:0px;">
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
@@ -394,6 +395,9 @@ table {
                 </td>
             </tr>
             <tr>
+                <td></td>
+            </tr>
+            <tr>
                 <td style="width: 50%; padding:0px;">
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
@@ -423,6 +427,7 @@ table {
                         </tr>
                     </table>
                 </td>
+                <td></td>
                 <td style="width: 50%; padding:0px;">
                     <table style="width: 100%;" class="table_guesses">
                         <tr>
@@ -461,7 +466,7 @@ table {
                 <li>The bottom left word has the T in the wrong spot.</li>
                 <li>The bottom right word has the first E in the right spot and a second E in the wrong spot.</li>
             </ol>
-        <p>You have 7 guesses to get all 4 words correct. Good luck!</p>
+        <p>You have 8 guesses to get all 4 words correct. Good luck!</p>
         <p>A new Topicle will be available each day!<br><br></p>
     </div>
     <div id="game" style="display: none;flex-direction: column;" width="100%">
@@ -499,14 +504,25 @@ table {
                     <td style="width: 50%; padding:0px;" id="box-holder-1">
                     </td>
 
+                    <td></td>
+                    <td></td>
+
                     <td style="width: 50%; padding:0px;" id="box-holder-2">
                     </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
                 </tr>
 
 
                 <tr>
                     <td style="width: 50%; padding:0px;" id="box-holder-3">
                     </td>
+
+                    <td></td>
+                    <td></td>
 
                     <td style="width: 50%; padding:0px;" id="box-holder-4">
                     </td>
@@ -525,7 +541,7 @@ table {
             <table width="100%">
                 <tr height="12%">
                     <td rowspan=5 style="width:50%;">
-                        <label for="share_content"></label><textarea class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=24 id="share_content">test</textarea>
+                        <label for="share_content"></label><textarea readonly class="box" style="width:100%; border: 1px solid;overflow:auto;resize:none;" rows=27 id="share_content">test</textarea>
                     </td>
                     <td style="font-size:75%; width:50%; text-align:center; vertical-align: top; padding-top: 15px;">
                         <div style="font-size:100%; width:50%; text-align:center; white-space: pre;" id="answer12">&nbsp;</div>
@@ -659,6 +675,13 @@ function makeBox(boxId, suffix) {
             <td class="box button" width="20%" id="box${boxId},7,4,${suffix}"></td>
             <td class="box button" width="20%" id="box${boxId},7,5,${suffix}"></td>
         </tr>
+        <tr>
+            <td class="box button" width="20%" id="box${boxId},8,1,${suffix}"></td>
+            <td class="box button" width="20%" id="box${boxId},8,2,${suffix}"></td>
+            <td class="box button" width="20%" id="box${boxId},8,3,${suffix}"></td>
+            <td class="box button" width="20%" id="box${boxId},8,4,${suffix}"></td>
+            <td class="box button" width="20%" id="box${boxId},8,5,${suffix}"></td>
+        </tr>
     </table>`
 
     const container = document.createElement("div");
@@ -675,7 +698,7 @@ function setupBoxes() {
 
 
 
-const TOTAL_LINES = 7;
+const TOTAL_LINES = 8;
 const TOTAL_COLUMNS = 5;
 const TOTAL_BOXES = 4;
 
@@ -1477,7 +1500,7 @@ acquire("reset_beta").onclick = function() {
     }
 }
 
-const emojiMap = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣"]
+const emojiMap = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"]
 
 function get_num_emoji(num) {
     if (num < 0) {

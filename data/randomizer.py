@@ -4,7 +4,7 @@ import json
 import random
 import re
 
-CATEGORIES = ["Culture", "Fiction", "Food", "History", "People", "Places", "Movies", "News", "Synonyms"]
+CATEGORIES = ["Culture", "Fiction", "Food", "History", "People", "Places", "Movies", "News", "Ordered", "Synonyms"]
 ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 
 MIX = 10000
@@ -54,7 +54,7 @@ ordered = {}
 with open("data/answers.csv") as file:
     dates = {(datetime.date(2024, 1, 1) + datetime.timedelta(days=n)).strftime("%B %#d") for n in range(366)}
     for row in csv.DictReader(file):
-        if row["Approval"].lower() == "good" and row["Hint"] and all(words := get_words(row)):
+        if row["Approval"].lower() in ("good", "maybe") and row["Hint"] and all(words := get_words(row)):
             if date := row["Date"]:
                 assert date not in answers
                 answers[date] = (row["Hint"].replace("\"", ""), words, row["Category"].split(" "), False)
@@ -63,7 +63,7 @@ with open("data/answers.csv") as file:
 # Remaining puzzles
 with open("data/answers.csv") as file:
     for row in csv.DictReader(file):
-        if row["Approval"].lower() == "good" and row["Hint"] and all(words := get_words(row)):
+        if row["Approval"].lower() in ("good", "maybe") and row["Hint"] and all(words := get_words(row)):
             if not row["Date"]:
                 date = random.choice(tuple(dates))
 
@@ -78,6 +78,8 @@ with open("data/answers.csv") as file:
                         ordered[hint][1].update({num: answers[date]})
                     else:
                         ordered[hint] = ([date], {num: answers[date]})
+
+                    answers[date][2].append("Ordered")
 
 
 answers = dict(sorted(answers.items(), key=lambda p: sort_key(p[0])))
@@ -100,7 +102,7 @@ for hint in ordered:
 
 
 # Final write
-answers = dict(sorted(((answer, tup[:3]) for answer, tup in answers.items()), key=lambda p: sort_key(p[0])))
-with open("data/answers_new.js", "w+") as file:
+answers = dict(sorted(((answer, tup[:2]) for answer, tup in answers.items()), key=lambda p: sort_key(p[0])))
+with open("data/answers.js", "w+") as file:
     string = json.dumps(answers).replace("'", "\\'")
     file.write(f"answers = JSON.parse('{string}')")
