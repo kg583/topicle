@@ -158,6 +158,20 @@ a {
     background-image: linear-gradient(to right, var(--green), var(--green) 50%, var(--black) 50%, var(--black));
 }
 
+.blink_me {
+    animation: blinker 500ms linear 0ms;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 40%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 table {
     font-size: inherit;
 }
@@ -558,7 +572,7 @@ table {
                 </tr>
                 <tr height="14.2%">
                     <td class="box" style="border: none; border-style: double;font-size:50%;width:50%;cursor:pointer;visibility:hidden;padding:8px;" id="share_image">
-                        share as image (twitter)
+                        share as image
                     </td>
                 </tr>
                 <tr height="14.2%">
@@ -925,6 +939,7 @@ function initDaily() {
     acquire("game").style.display = "flex";
     acquire("tutorial").style.display = "none";
     acquire("reset_beta").style.display= "none";
+    acquire("share_clipboard").textContent = "copy to clipboard";
     if (canGoFullscreen()) {
         acquire("fullscreen").style.display = "";
         acquire("exit_fullscreen").style.display = "none";
@@ -948,6 +963,7 @@ function initBeta() {
     acquire("game").style.display = "flex";
     acquire("tutorial").style.display = "none";
     acquire("reset_beta").style.display= "";
+    acquire("share_clipboard").textContent = "copy to clipboard";
     if (canGoFullscreen()) {
         acquire("fullscreen").style.display = "";
         acquire("exit_fullscreen").style.display = "none";
@@ -1601,7 +1617,10 @@ function do_share(copy, shareType) {
         document.execCommand("copy");
         acquire("share_content").blur();
         if (shareType === "clipboard") {
-            alert("Copied results to clipboard!")
+            acquire("share_clipboard").classList.remove("blink_me")
+            void acquire("share_clipboard").offsetWidth;
+            acquire("share_clipboard").textContent = "copied!";
+            acquire("share_clipboard").classList.add("blink_me");
         }
     }
 
