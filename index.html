@@ -1618,6 +1618,7 @@ function do_share(copy, shareType) {
         document.execCommand("copy");
         acquire("share_content").blur();
         if (shareType === "clipboard") {
+            acquire("share_clipboard").classList.remove("blink_me");
             void acquire("share_clipboard").offsetWidth;
             acquire("share_clipboard").textContent = "copied!";
             acquire("share_clipboard").classList.add("blink_me");
