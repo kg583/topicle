@@ -94,6 +94,7 @@ with open("data/answers.csv") as file:
             break
 
 
+assert len(answers) == 366
 answers = dict(sorted(answers.items(), key=lambda p: sort_key(p[0])))
 current = score()
 
