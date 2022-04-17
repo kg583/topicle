@@ -10,7 +10,7 @@ ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
 MIX = 10000
 
 
-def get_words(r) -> list:
+def get_words(r) -> list[str]:
     return [r[f"Word {i + 1}"] for i in range(4)]
 
 
@@ -31,20 +31,24 @@ def heuristic(category: str) -> float:
 
 
 def sort_key(key: str) -> datetime.datetime:
-    d = datetime.datetime.strptime(key + " 2024", "%B %d %Y")
-    if d < datetime.datetime(2024, 4, 15):
-        d = datetime.datetime.strptime(key + " 2025", "%B %d %Y")
+    d = datetime.datetime.strptime(key + " 2023", "%B %d %Y")
+    if d < datetime.datetime(2023, 5, 1):
+        d = datetime.datetime.strptime(key + " 2024", "%B %d %Y")
 
     return d
 
 
-def score():
+def score() -> float:
     return sum(heuristic(category) for category in CATEGORIES)
 
 
-def swap(k1: str, k2: str):
+def swap(k1: str, k2: str) -> None:
     if answers[k1][3] and answers[k2][3]:
         answers[k1], answers[k2] = answers[k2], answers[k1]
+
+
+def tup(r, free: bool) -> tuple[str, list[str], list[str], bool]:
+    return r["Topic"].replace("\"", ""), get_words(r), r["Category"].split(" "), free
 
 
 answers = {}
@@ -53,33 +57,41 @@ ordered = {}
 # Fixed dates
 with open("data/answers.csv") as file:
     dates = {(datetime.date(2024, 1, 1) + datetime.timedelta(days=n)).strftime("%B %#d") for n in range(366)}
+    n = 0
     for row in csv.DictReader(file):
-        if row["Approval"].lower() in ("good", "maybe") and row["Hint"] and all(words := get_words(row)):
-            if date := row["Date"]:
-                assert date not in answers
-                answers[date] = (row["Hint"].replace("\"", ""), words, row["Category"].split(" "), False)
-                dates.remove(date)
+        if date := row["Date"]:
+            assert date not in answers
+            answers[date] = tup(row, False)
+            dates.remove(date)
+
+        n += 1
+        if n == 366:
+            break
 
 # Remaining puzzles
 with open("data/answers.csv") as file:
+    n = 0
     for row in csv.DictReader(file):
-        if row["Approval"].lower() in ("good", "maybe") and row["Hint"] and all(words := get_words(row)):
-            if not row["Date"]:
-                date = random.choice(tuple(dates))
+        if not row["Date"]:
+            date = random.choice(tuple(dates))
 
-                answers[date] = (row["Hint"].replace("\"", ""), words, row["Category"].split(" "), True)
-                dates.remove(date)
+            answers[date] = tup(row, True)
+            dates.remove(date)
 
-                if re.match(r'.*? [IVX]+$', row["Hint"]) is not None:
-                    *hint, num = row["Hint"].split()
-                    hint, num = " ".join(hint), ROMAN.index(num)
-                    if hint in ordered:
-                        ordered[hint][0].append(date)
-                        ordered[hint][1].update({num: answers[date]})
-                    else:
-                        ordered[hint] = ([date], {num: answers[date]})
+            if re.match(r'.*? [IVX]+$', row["Topic"]) is not None:
+                *topic, num = row["Topic"].split()
+                topic, num = " ".join(topic), ROMAN.index(num)
+                if topic in ordered:
+                    ordered[topic][0].append(date)
+                    ordered[topic][1].update({num: answers[date]})
+                else:
+                    ordered[topic] = ([date], {num: answers[date]})
 
-                    answers[date][2].append("Ordered")
+                answers[date][2].append("Ordered")
+
+        n += 1
+        if n == 366:
+            break
 
 
 answers = dict(sorted(answers.items(), key=lambda p: sort_key(p[0])))
@@ -96,9 +108,9 @@ for _ in range(MIX):
 
 
 # Ordered clue sorting
-for hint in ordered:
-    for index, entry in enumerate(sorted(ordered[hint][0], key=sort_key)):
-        answers[entry] = ordered[hint][1][index]
+for topic in ordered:
+    for index, entry in enumerate(sorted(ordered[topic][0], key=sort_key)):
+        answers[entry] = ordered[topic][1][index]
 
 
 # Final write
