@@ -32,7 +32,7 @@ def heuristic(category: str) -> float:
 
 def sort_key(key: str) -> datetime.datetime:
     d = datetime.datetime.strptime(key + " 2024", "%B %d %Y")
-    if d >= datetime.datetime(2024, 5, 1):
+    if d >= datetime.datetime(2024, 5, 15):
         d = datetime.datetime.strptime(key + " 2023", "%B %d %Y")
 
     return d
@@ -75,10 +75,11 @@ with open("data/answers.csv") as file:
         if not row["Date"]:
             date = random.choice(tuple(dates))
 
-            answers[date] = tup(row, True)
+            is_ordered = re.match(r'.*? [IVX]+$', row["Topic"]) is not None
+            answers[date] = tup(row, not is_ordered)
             dates.remove(date)
 
-            if re.match(r'.*? [IVX]+$', row["Topic"]) is not None:
+            if is_ordered:
                 *topic, num = row["Topic"].split()
                 topic, num = " ".join(topic), ROMAN.index(num)
                 if topic in ordered:
