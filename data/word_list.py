@@ -1,6 +1,6 @@
 import unidecode
 
-from .randomizer import answers
+from randomizer import answers
 
 
 allowed = set()

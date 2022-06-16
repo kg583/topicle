@@ -1,2 +1,2 @@
-from .randomizer import answers
-from .word_list import allowed
+from randomizer import answers
+from word_list import allowed
