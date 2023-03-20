@@ -4,7 +4,7 @@ from randomizer import answers
 
 
 allowed = set()
-MIN = 119
+MIN = 56 # faser
 
 # Wikipedia words
 with open("data/enwiki-20210820-words-frequency.txt", encoding='utf-8') as file:

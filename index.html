@@ -345,7 +345,7 @@ table {
             </tr>
         </table>
         <p>The letters C, O, M, F, Y are not in the word in any spot.<br><br>When you type a guess in TOPICLE, you will guess that word for all four words that you are solving. Each word will be different, and may be a proper noun or name.<br><br>All four words will be somehow related to the clue at the top of the page. Clue topics will vary from science to history to pop culture and more!<br></p>
-        <div style="text-align: center; font-size: 250%">MATERIALS</div><br>
+        <div style="text-align: center; font-size: 250%">METALS</div><br>
         <table style="width: 100%; border-spacing:0px;font-size:200%;">
             <tr>
                 <td style="width: 50%; padding:0px;">
@@ -487,11 +487,7 @@ table {
         <table style="width: 100%;">
             <tr>
                 <td class="box" style="width:25%;cursor:pointer;" id="restart">back</td>
-                <td class="box" style="width:20%;cursor:pointer;display:none;" id="reset_beta">new</td>
                 <td style="width:*; text-align:center;font-size:75%;" id="game_title"></td>
-                <td id="settings2" style="padding:6px;cursor:pointer;width:32px;">
-                    <img src="images/settings.svg" width="32" height="32" alt="">
-                </td>
                 <td id="tutorial2" style="padding:6px;cursor:pointer;width:32px;">
                     <img src="images/help_outline.svg" width="32" height="32" alt="">
                 </td>
@@ -941,7 +937,6 @@ function initDaily() {
     acquire("title").style.display = "none";
     acquire("game").style.display = "flex";
     acquire("tutorial").style.display = "none";
-    acquire("reset_beta").style.display= "none";
     acquire("share_clipboard").textContent = "copy to clipboard";
     if (canGoFullscreen()) {
         acquire("fullscreen").style.display = "";
@@ -965,7 +960,6 @@ function initBeta() {
     acquire("title").style.display = "none";
     acquire("game").style.display = "flex";
     acquire("tutorial").style.display = "none";
-    acquire("reset_beta").style.display= "";
     acquire("share_clipboard").textContent = "copy to clipboard";
     if (canGoFullscreen()) {
         acquire("fullscreen").style.display = "";
@@ -974,12 +968,14 @@ function initBeta() {
         acquire("fullscreen").style.display = "none";
         acquire("exit_fullscreen").style.display = "none";
     }
+    /*
     if (window.gtag) {
         gtag("event", "start", {
             mode: "beta",
             daily_key: undefined
         });
     }
+     */
 }
 
 function onStateChange() {
@@ -1249,7 +1245,6 @@ function restart() {
         let date = (new Date());
         key = date.toLocaleDateString("en-US", {month: "long", day: "numeric"})
 
-        printclear(acquire("game_title"), "Topicle - " + key);
         last_daily = key;
         if (!no_localstorage) {
             try {
@@ -1263,6 +1258,9 @@ function restart() {
             }
         }
     } else if (beta_mode) {
+        let date = (new Date());
+        date.setDate(date.getDate() + 3);
+
         if (!no_localstorage) {
             try {
                 key = window.localStorage.getItem("last_beta");
@@ -1270,8 +1268,8 @@ function restart() {
                 no_localstorage = true;
             }
         }
-        while (!key || int(key) != 0 || !(key in answers)) {
-            key = randomDate(new Date(2024, 1, 1), new Date(2024, 12, 31)).toLocaleDateString("en-US", {month: "long", day: "numeric"})
+        if (key === null) {
+            key = date.toLocaleDateString("en-US", {month: "long", day: "numeric"})
         }
         if (!no_localstorage) {
             try {
@@ -1280,8 +1278,8 @@ function restart() {
                 no_localstorage = true;
             }
         }
-        printclear(acquire("game_title"), "Beta Topicle");
     }
+    printclear(acquire("game_title"), "Topicle - " + key);
 
     entry = answers[key]
     clue = entry[0]
@@ -1506,14 +1504,6 @@ acquire("share_clipboard").onclick = function() {
 }
 acquire("share_image").onclick = function() {
     do_share(true, "image");
-}
-acquire("reset_beta").onclick = function() {
-    vibrate();
-    if (isInWebViewiOS || confirm("Are you sure you want to start a new Beta Topicle? (The current game will be deleted)")) {
-        window.localStorage.removeItem("beta_guesses");
-        window.localStorage.removeItem("last_beta");
-        initBeta();
-    }
 }
 
 const emojiMap = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣"]
