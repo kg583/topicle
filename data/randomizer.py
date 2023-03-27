@@ -32,7 +32,7 @@ def heuristic(category: str) -> float:
 
 def sort_key(key: str) -> datetime.datetime:
     d = datetime.datetime.strptime(key + " 2024", "%B %d %Y")
-    if d >= datetime.datetime(2024, 3, 26):
+    if d >= datetime.datetime(2024, 3, 28):
         d = datetime.datetime.strptime(key + " 2023", "%B %d %Y")
 
     return d
