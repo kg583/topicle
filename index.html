@@ -278,7 +278,7 @@ table {
                     </tr>
                     <tr>
                         <td></td>
-                        <td id="next_daily">every day</td>
+                        <td>every day</td>
                     </tr>
                 </table>
             </div>
@@ -1190,50 +1190,6 @@ function test_real_word(line, guess_current) {
 
 last_daily = null;
 no_localstorage = false;
-
-try {
-    last_daily = window.localStorage.getItem("last_daily");
-} catch (e) {
-    no_localstorage = true;
-}
-
-function time_to_next() {
-    try {
-        if (last_daily == null) last_daily = window.localStorage.getItem("last_daily");
-    } catch (e) {
-        no_localstorage = true;
-    }
-    if (last_daily == null) return null;
-
-    let date = new Date();
-    let timeLeftSeconds = (Date.parse(last_daily) - date.getTime()) / 1000;
-
-    let value = 0;
-    let name = "";
-    if (timeLeftSeconds < 0) return null;
-    if (timeLeftSeconds < 60) {
-        value = (timeLeftSeconds >> 0);
-        name = " second";
-    } else if (timeLeftSeconds < 60 * 60) {
-        value = ((timeLeftSeconds / 60) >> 0);
-        name = " minute";
-    } else {
-        value = ((timeLeftSeconds / 60 / 60) >> 0);
-        name = " hour";
-    }
-    return value + name + (value > 1 ? "s" : "");
-}
-
-function setTimeToNext() {
-    if (!no_localstorage) {
-        let next_description = time_to_next();
-        if (next_description == null) printclear(acquire("next_daily"), "every day");
-        else printclear(acquire("next_daily"), "(next in " + next_description + ")");
-    }
-}
-
-setInterval(setTimeToNext, 1000);
-setTimeToNext();
 
 function restart() {
     acquire("body").style.backgroundColor = "var(--black)";
