@@ -117,6 +117,6 @@ for topic in ordered:
 
 # Final write
 answers = dict(sorted(((answer, tup[:2]) for answer, tup in answers.items()), key=lambda p: sort_key(p[0])))
-with open("data/answers.js", "w+") as file:
+with open("data/coconut.js", "w+") as file:
     string = json.dumps(answers).replace("'", "\\'")
     file.write(f"answers = JSON.parse('{string}')")
