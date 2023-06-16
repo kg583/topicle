@@ -1,1 +1,1 @@
-answers = JSON.parse('{"Baseball": ["HAPPY FATHER\'S DAY", ["GEHRIG", "MANTLE", "WAGNER", "PUJOLS", "RIPKEN", "KOUFAX"]]}')
+answers = JSON.parse('{"Baseball": ["BASEBALL PLAYERS", ["GEHRIG", "MANTLE", "WAGNER", "PUJOLS", "RIPKEN", "KOUFAX"]]}')
